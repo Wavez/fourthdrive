@@ -7,7 +7,7 @@ import SVGAnim from "snapsvg-animator";
 import "snapsvg-cjs";
 import Iconify from '@iconify/iconify';
 
-import classes from './index.css';
+import classes from './index.scss';
 import particlesJSON from './particles.json';
 import logo from './logo.json';
 

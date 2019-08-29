@@ -1,0 +1,56 @@
+body {
+  background: black;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+#particles-js {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.container {
+  margin: auto;
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+#logo {
+}
+@keyframes glitch {
+  0% {
+    filter: drop-shadow(5px 4px 0 cyan) drop-shadow(-5px -6px 0 red);
+  }
+  25% {
+    filter: drop-shadow(-5px -6px 0 cyan) drop-shadow(5px 4px 0 red);
+  }
+  50% {
+    filter: drop-shadow(5px -4px 0 cyan) drop-shadow(-8px 4px 0 red);
+  }
+  75% {
+    filter: drop-shadow(-8px -4px 0 cyan) drop-shadow(-5px -4px 0 red);
+  }
+  100% {
+    filter: drop-shadow(-5px 0px 0 cyan) drop-shadow(5px -4px 0 red);
+  }
+}
+
+.social {
+  padding: 1rem;
+  a {
+    color: crimson;
+    text-decoration: none;
+    font-size: 1.7rem;
+    padding: 1rem;
+    &:hover,
+    &:focus,
+    &:active {
+      animation: glitch 200ms infinite;
+    }
+  }
+}
