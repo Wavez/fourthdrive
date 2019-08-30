@@ -10,9 +10,11 @@ import Iconify from '@iconify/iconify';
 import classes from './index.scss';
 import particlesJSON from './particles.json';
 import logo from './logo.json';
+import iconGlitch from './iconGlitch';
 
 
-particlesJS("particles-js", particlesJSON );
+
+particlesJS("particles-js", particlesJSON);
 const container = document.getElementById('logo');
 const svg = new SVGAnim(logo, 200, 220, 40);
 container.appendChild(svg.s.node);
