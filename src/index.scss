@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
+  overflow: hidden;
 }
 #particles-js {
   z-index: -1;
@@ -20,8 +21,7 @@ body {
   transform: translate(-50%, -50%);
   width: 100%;
 }
-#logo {
-}
+
 @keyframes glitch {
   0% {
     filter: drop-shadow(5px 4px 0 cyan) drop-shadow(-5px -6px 0 red);
