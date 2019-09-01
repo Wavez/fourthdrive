@@ -1,54 +1,42 @@
-
-const social = document.querySelector(".social");
-const icons = social.children;
-
-const iconsSum = icons.length;
-const resolution = 500;
-let tick = 0;
-const tickEnd = 10;
-
-const glitch = () => {
-    if (tick === tickEnd) {
-        tick = 0;
-    }
-    if (tick === iconsSum){
-        icons[tick - 1].classList.remove("glitch");
-    }
-    if (tick < iconsSum) {
-        icons[tick].classList.add("glitch");
-        if (tick > 0) {
-            icons[tick - 1].classList.remove("glitch");
+const iconSwitch = () => {
+    const icons = document.querySelectorAll(".social a");
+    let i = 0;
+    const glitchOrder = setInterval(() => {
+        console.log(i);
+        if (i === 4) {
+            icons[3].classList.remove("glitch");
+            clearInterval(glitchOrder);
         }
-    }
-    ++tick;
+        else {
+            icons[i].classList.add("glitch");
+            if (i > 0) {
+                icons[i - 1].classList.remove("glitch");
+            }
+            ++i;
+        }
+
+    }, 500);
 }
 
 
 let intervalID;
 
-const intervalManager = (flag) => {
-    if (flag) {
-        setTimeout(intervalID = setInterval(glitch, resolution), 4000);
-    }
-    else {
-        let hovered = document.querySelector(".glitch");
-        if (hovered && hovered.classList) {
-            hovered.classList.remove("glitch");
-            clearInterval(intervalID);
-        }
-    }
-
+const intervalManager = (flag, fnc, time) => {
+   if(flag)
+     intervalID =  setInterval(fnc, time);
+   else
+     clearInterval(intervalID);
 }
 
-
-social.addEventListener("mouseenter", (e) => {
+const social = document.querySelector(".social");
+social.addEventListener("mouseenter", (e) => { 
     intervalManager(false);
 });
-social.addEventListener("mouseleave", (e) => {
-    intervalManager(true);
+social.addEventListener("mouseleave", (e) => { 
+    intervalManager(true, iconSwitch, 4000);
 });
 
-intervalManager(true);
+intervalManager(true, iconSwitch, 4000);
 
 
-export default () => { };
+export default () => {};
