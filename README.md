@@ -1,7 +1,7 @@
 # Fourth Drive 
 
 [fourthdrive.com](https://fourthdrive.com)  
-Music artist personal website.  
+My electronic music website.  
 Framework-less, pure JavaScript 😎
 ```bash
 ______               _   _      ______      _           
