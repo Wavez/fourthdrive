@@ -12,8 +12,6 @@
     "@iconify/iconify": "1.0.3",
     "@iconify/icons-simple-line-icons": "1.0.0",
     "particles.js": "2.0.0",
-    "snapsvg-animator": "^0.0.3",
-    "snapsvg-cjs": "^0.0.6",
     "tasktimer": "^3.0.0"
   },
   "devDependencies": {
@@ -27,7 +25,6 @@
   },
   "scripts": {
     "start": "parcel index.html",
-    "watch": "parcel watch index.html",
     "build": "parcel build index.html"
   },
   "keywords": [],
