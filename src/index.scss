@@ -28,24 +28,33 @@ body {
 @keyframes glitch {
   0% {
     filter: drop-shadow(5px 4px 0 cyan) drop-shadow(-5px -6px 0 red);
+    transform: rotate(0deg);
   }
   25% {
     filter: drop-shadow(-5px -6px 0 cyan) drop-shadow(5px 4px 0 red);
   }
   50% {
     filter: drop-shadow(5px -4px 0 cyan) drop-shadow(-8px 4px 0 red);
+    transform: rotate(random(4)*10 +deg);
   }
   75% {
     filter: drop-shadow(-8px -4px 0 cyan) drop-shadow(-5px -4px 0 red);
   }
   100% {
     filter: drop-shadow(-5px 0px 0 cyan) drop-shadow(5px -4px 0 red);
+    transform: rotate(0deg);
   }
 }
 
 .social {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: flex-start;
   padding: 1rem;
   a {
+    align-self: center;
+    display: block;
     color: crimson;
     text-decoration: none;
     font-size: 1.7rem;
