@@ -1,9 +1,8 @@
-[![Known Vulnerabilities](https://snyk.io/test/github/Wavez/fourthdrive/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Wavez/fourthdrive?targetFile=package.json)
-# Fourth Drive 🎧 [fourthdrive.com](https://fourthdrive.com)  
+# Fourth Drive 🎧 | [fourthdrive.com](https://fourthdrive.com)  
 My electronic music website.  
 Framework-less, pure JavaScript 😾  
 Minimalistic as my techno 🚨  
-Feel free to poke around, steal some codes  
+Feel free to poke around, steal some cod3s  
 ```bash
 ______               _   _      ______      _           
 |  ___|             | | | |     |  _  \    (_)          
