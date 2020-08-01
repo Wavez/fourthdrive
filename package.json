@@ -9,7 +9,7 @@
     ]
   },
   "dependencies": {
-    "@iconify/iconify": "1.0.4",
+    "@iconify/iconify": "1.0.7",
     "@iconify/icons-simple-line-icons": "1.0.1",
     "particles.js": "2.0.0",
     "tasktimer": "^3.0.0"
