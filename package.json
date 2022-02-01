@@ -1,6 +1,6 @@
 {
   "name": "fourthdrive",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "babel": {
@@ -9,19 +9,19 @@
     ]
   },
   "dependencies": {
-    "@iconify/iconify": "1.0.7",
+    "@iconify/iconify": "2.1.2",
     "@iconify/icons-simple-line-icons": "1.1.0",
     "particles.js": "2.0.0",
     "tasktimer": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.11",
     "parcel-bundler": "^1.9.4",
-    "parcel-plugin-compress": "^1.1.0",
-    "parcel-plugin-static-files-copy": "^2.3.1",
-    "sass": "^1.26.3"
+    "parcel-plugin-compress": "^2.0.2",
+    "parcel-plugin-static-files-copy": "^2.6.0",
+    "sass": "^1.49.4"
   },
   "scripts": {
     "start": "parcel index.html",
