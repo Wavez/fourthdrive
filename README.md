@@ -1,7 +1,10 @@
 # Fourth Drive 🎧 | [fourthdrive.com](https://fourthdrive.com)
-About ten years ago, I was immersed in creating synth-based music, drawing inspiration from the techno sound of the early 2010s.
-This site began as a landing page for that project, but over time, it became a creative sandbox—especially for **experimenting with native SVG animations** and minimal web design, 
-a snapshot of that creative era.
+About ten years ago, I was immersed in creating synth-based music,  
+drawing inspiration from the techno sound of the early 2010s.  
+This site began as a landing page for that project, but over time, 
+It became a creative sandbox -  
+especially for **experimenting with native SVG animations** and minimal web design.  
+A snapshot of that creative era.
 
 
 ```bash
