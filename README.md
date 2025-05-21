@@ -1,8 +1,9 @@
 # Fourth Drive 🎧 | [fourthdrive.com](https://fourthdrive.com)
-My electronic music website.  
-Framework-less, pure JavaScript 😾  
-Minimalistic as my techno 🚨  
-Feel free to poke around, steal some cod3s  
+About ten years ago, I was immersed in creating synth-based music, drawing inspiration from the techno sound of the early 2010s.
+This site began as a landing page for that project, but over time, it became a creative sandbox—especially for **experimenting with native SVG animations** and minimal web design, 
+a snapshot of that creative era.
+
+
 ```bash
 ______               _   _      ______      _           
 |  ___|             | | | |     |  _  \    (_)          
@@ -11,6 +12,7 @@ ______               _   _      ______      _
 | || (_) | |_| | |  | |_| | | | | |/ /| |  | |\ V /  __/
 \_| \___/ \__,_|_|   \__|_| |_| |___/ |_|  |_| \_/ \___|
 ```
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
