@@ -8,7 +8,6 @@
   "dependencies": {
     "@iconify/iconify": "^2.1.2",
     "@iconify/icons-simple-line-icons": "^1.2.3",
-    "@tsparticles/all": "^3.8.1",
     "tasktimer": "^3.0.0"
   },
   "devDependencies": {
