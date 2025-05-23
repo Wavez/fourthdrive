@@ -8,7 +8,7 @@ import socialYoutube from '@iconify/icons-simple-line-icons/social-youtube';
 import Iconify from '@iconify/iconify';
 
 // import particlesJSON from './particles.json';
-import iconGlitch from '../../vitejs-vite-h8eab5ze/src/iconGlitch';
+import iconGlitch from './iconGlitch';
 
 //fixme
 
