@@ -7,8 +7,7 @@
   "description": "",
   "dependencies": {
     "@iconify/iconify": "^2.1.2",
-    "@iconify/icons-simple-line-icons": "^1.2.3",
-    "tasktimer": "^3.0.0"
+    "@iconify/icons-simple-line-icons": "^1.2.3"
   },
   "devDependencies": {
     "vite": "^6.3.5"

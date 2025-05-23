@@ -1,59 +1,49 @@
-import { TaskTimer } from 'tasktimer';
-const social = document.querySelector(".social");
-const icons = social.children;
-const iconsLength = icons.length;
-let animatedNode = 0;
-const timer = new TaskTimer(500);
-timer.add([
-    {
-        id: 'reset-counter',      
-        tickInterval: 12,
-        totalRuns: 0,
-        callback(task) {
-            animatedNode = 0;
-        }
-    },
-    {
-        id: 'icon-glitch',
-        tickInterval: 1,
-        totalRuns: 0,
-        callback(task) {
-            if (animatedNode <= iconsLength) {
-                if (animatedNode === iconsLength) {
-                    icons[iconsLength-1].classList.remove("glitch");
-                }
-                else {
-                    icons[animatedNode].classList.add("glitch");
-                    if (animatedNode > 0) {
-                        icons[animatedNode - 1].classList.remove("glitch");
-                    }
-                    ++animatedNode;
-                }
-            }
-        }
+const socialContainer = document.querySelector(".social");
+const iconElements = Array.from(socialContainer.children);
+const GLITCH_INTERVAL_MS = 500;
+const RESET_INTERVAL_MS = 12 * GLITCH_INTERVAL_MS;
+
+let currentIndex = 0;
+let glitchInterval = null;
+let resetInterval = null;
+
+function advanceGlitch() {
+    if (currentIndex >= iconElements.length) {
+        iconElements[iconElements.length - 1]?.classList.remove("glitch");
+        return;
     }
 
-]);
+    const currentIcon = iconElements[currentIndex];
+    const previousIcon = iconElements[currentIndex - 1];
 
-timer.on(TaskTimer.Event.STOPPED, () => {
-    if (icons[animatedNode-1]){
-        icons[animatedNode-1].classList.remove("glitch");
-    }
-});
-timer.on(TaskTimer.Event.STARTED, () => {
-    animatedNode = 0;
-});
+    currentIcon?.classList.add("glitch");
+    previousIcon?.classList.remove("glitch");
 
-timer.start();
+    currentIndex++;
+}
 
- 
-social.addEventListener("mouseenter", (e) => { 
-    timer.stop();
-});
-social.addEventListener("mouseleave", (e) => { 
-    timer.start();
-});
+function startGlitchSequence() {
+    stopGlitchSequence(); // Prevent duplicates
 
- 
+    glitchInterval = setInterval(advanceGlitch, GLITCH_INTERVAL_MS);
+    resetInterval = setInterval(() => {
+        currentIndex = 0;
+    }, RESET_INTERVAL_MS);
+}
 
-export default () => { };
+function stopGlitchSequence() {
+    clearInterval(glitchInterval);
+    clearInterval(resetInterval);
+    glitchInterval = null;
+    resetInterval = null;
+
+    const lastIcon = iconElements[currentIndex - 1];
+    lastIcon?.classList.remove("glitch");
+}
+
+socialContainer.addEventListener("mouseenter", stopGlitchSequence);
+socialContainer.addEventListener("mouseleave", startGlitchSequence);
+
+startGlitchSequence();
+
+export default () => {};
