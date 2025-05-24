@@ -1,9 +1,9 @@
-body {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    overflow: hidden;
-    background: linear-gradient(
+:root {
+    --glitch-cyan: cyan;
+    --glitch-red: red;
+    --glitch-speed: 200ms;
+    --star-scroll-speed: 30s;
+    --bg-gradient: linear-gradient(
             132deg,
             #050505,
             #0a0f1c,
@@ -13,10 +13,19 @@ body {
             #0d1b2a,
             #050505
     );
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow: hidden;
+    background: var(--bg-gradient);
     background-size: 300% 300%;
     animation: BackgroundGradient 8s ease-in-out infinite;
 }
 
+/* Background gradient animation */
 @keyframes BackgroundGradient {
     0% {
         background-position: 0% 50%;
@@ -29,51 +38,111 @@ body {
     }
 }
 
+/* Star field animation */
+body::before,
+body::after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4000px;
+    top: 0;
+    left: 0;
+    background: radial-gradient(1px 1px at 5% 5%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 10% 90%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 15% 25%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 20% 75%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 25% 40%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 30% 60%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 35% 10%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 40% 90%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 45% 20%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 50% 80%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 55% 30%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 60% 70%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 65% 50%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 70% 15%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 75% 85%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 80% 35%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 85% 65%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 90% 45%, #fff 100%, transparent 0),
+    radial-gradient(1px 1px at 95% 25%, #fff 100%, transparent 0),
+    radial-gradient(2px 2px at 12% 60%, #fff 100%, transparent 0),
+    radial-gradient(2px 2px at 18% 10%, #fff 100%, transparent 0),
+    radial-gradient(2px 2px at 27% 95%, #fff 100%, transparent 0),
+    radial-gradient(2px 2px at 34% 45%, #fff 100%, transparent 0),
+    radial-gradient(2px 2px at 43% 70%, #fff 100%, transparent 0),
+    radial-gradient(2px 2px at 52% 5%, #fff 100%, transparent 0),
+    radial-gradient(2px 2px at 63% 85%, #fff 100%, transparent 0),
+    radial-gradient(2px 2px at 76% 60%, #fff 100%, transparent 0),
+    radial-gradient(2px 2px at 87% 30%, #fff 100%, transparent 0),
+    radial-gradient(3px 3px at 22% 38%, #fff 100%, transparent 0),
+    radial-gradient(3px 3px at 48% 25%, #fff 100%, transparent 0),
+    radial-gradient(3px 3px at 66% 12%, #fff 100%, transparent 0),
+    radial-gradient(3px 3px at 79% 92%, #fff 100%, transparent 0),
+    radial-gradient(3px 3px at 92% 58%, #fff 100%, transparent 0);
+    animation: starScroll var(--star-scroll-speed) linear infinite;
+}
 
+body::after {
+    top: 2000px;
+}
+
+@keyframes starScroll {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-2000px);
+    }
+}
+
+/* Main container */
 .container {
     display: flex;
     justify-content: center;
-    height: 100vh;
-    flex-direction: column;
     align-items: flex-start;
+    flex-direction: column;
+    min-height: 100dvh;
+    padding: 2rem;
 }
 
 .container > * {
     align-self: center;
 }
 
+/* Glitch animation */
 @keyframes glitch {
     0% {
-        filter: drop-shadow(5px 4px 0 cyan) drop-shadow(-5px -6px 0 red);
+        filter: drop-shadow(5px 4px 0 var(--glitch-cyan)) drop-shadow(-5px -6px 0 var(--glitch-red));
         transform: rotate(0deg);
     }
     25% {
-        filter: drop-shadow(-5px -6px 0 cyan) drop-shadow(5px 4px 0 red);
+        filter: drop-shadow(-5px -6px 0 var(--glitch-cyan)) drop-shadow(5px 4px 0 var(--glitch-red));
     }
     50% {
-        filter: drop-shadow(5px -4px 0 cyan) drop-shadow(-8px 4px 0 red);
+        filter: drop-shadow(5px -4px 0 var(--glitch-cyan)) drop-shadow(-8px 4px 0 var(--glitch-red));
         transform: rotate(10deg);
     }
     75% {
-        filter: drop-shadow(-8px -4px 0 cyan) drop-shadow(-5px -4px 0 red);
+        filter: drop-shadow(-8px -4px 0 var(--glitch-cyan)) drop-shadow(-5px -4px 0 var(--glitch-red));
     }
     100% {
-        filter: drop-shadow(-5px 0px 0 cyan) drop-shadow(5px -4px 0 red);
+        filter: drop-shadow(-5px 0px 0 var(--glitch-cyan)) drop-shadow(5px -4px 0 var(--glitch-red));
         transform: rotate(0deg);
     }
 }
 
+/* Social links */
 .social {
     display: flex;
-    justify-content: center;
     flex-direction: row;
+    justify-content: center;
     align-items: flex-start;
     padding: 1rem;
 }
 
 .social a {
-    align-self: center;
-    display: block;
     color: crimson;
     text-decoration: none;
     font-size: 1.7rem;
@@ -82,10 +151,17 @@ body {
 
 .social a:hover,
 .social a:focus,
-.social a:active {
-    animation: glitch 200ms infinite;
+.social a:active,
+.glitch {
+    animation: glitch var(--glitch-speed) infinite;
 }
 
-.glitch {
-    animation: glitch 200ms infinite;
+/* Accessibility: Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
 }
