@@ -28,13 +28,13 @@ body {
 /* Background gradient animation */
 @keyframes BackgroundGradient {
     0% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
     50% {
         background-position: 100% 50%;
     }
     100% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
 }
 
@@ -147,6 +147,13 @@ body::after {
     text-decoration: none;
     font-size: 1.7rem;
     padding: 1rem;
+}
+
+.social a img {
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .social a:hover,

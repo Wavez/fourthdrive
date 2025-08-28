@@ -21,7 +21,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PTSP0M6MCP"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'G-PTSP0M6MCP');
@@ -31,17 +35,17 @@
 <body>
 <div class="container">
     <div id="logo" title="Fourth Drive logo">
-        <img src="/logo.svg" alt="Fourth Drive logo"/>
+        <img src="/logo.svg" alt="Fourth Drive logo" decoding="async" fetchpriority="high"/>
     </div>
     <div class="social">
-        <a href="https://ffm.bio/fourthdrive" target="_blank" rel="noopener noreferrer" title="feature.fm">
-            <span class="iconify" data-icon="simple-line-icons:control-play"></span>
+        <a href="https://ffm.bio/fourthdrive" target="_blank" rel="noopener noreferrer" title="feature.fm" aria-label="feature.fm">
+            <img src="/play.svg" alt="feature.fm" decoding="async" />
         </a>
-        <a href="https://www.instagram.com/fourthdrive" target="_blank" rel="noopener noreferrer" title="Instagram">
-            <span class="iconify" data-icon="simple-line-icons:social-instagram"></span>
+        <a href="https://www.instagram.com/fourthdrive" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
+            <img src="/instagram.svg" alt="Instagram" decoding="async" />
         </a>
-        <a href="https://fourthdrive.gumroad.com" target="_blank" rel="noopener noreferrer" title="Freebies">
-            <span class="iconify" data-icon="simple-line-icons:diamond"></span>
+        <a href="https://fourthdrive.gumroad.com" target="_blank" rel="noopener noreferrer" title="gumroad" aria-label="gumroad">
+            <img src="/present.svg" alt="gumroad" decoding="async" />
         </a>
     </div>
 </div>

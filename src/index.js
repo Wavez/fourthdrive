@@ -1,8 +1,8 @@
 import './style.css'
-import Iconify from '@iconify/iconify';
 
 const socialContainer = document.querySelector(".social");
-const iconElements = Array.from(socialContainer.children);
+const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+const iconElements = socialContainer ? Array.from(socialContainer.children) : [];
 const GLITCH_INTERVAL_MS = 500;
 const RESET_INTERVAL_MS = 12 * GLITCH_INTERVAL_MS;
 
@@ -44,8 +44,9 @@ function stopGlitchSequence() {
     lastIcon?.classList.remove("glitch");
 }
 
-socialContainer.addEventListener("mouseenter", stopGlitchSequence);
-socialContainer.addEventListener("mouseleave", startGlitchSequence);
-
-startGlitchSequence();
+if (socialContainer && !prefersReducedMotion) {
+    socialContainer.addEventListener("mouseenter", stopGlitchSequence);
+    socialContainer.addEventListener("mouseleave", startGlitchSequence);
+    startGlitchSequence();
+}
 
