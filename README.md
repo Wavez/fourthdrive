@@ -1,10 +1,9 @@
 # Fourth Drive 🎧 | [fourthdrive.com](https://fourthdrive.com)
 In the early 2010s I was immersed in creating synth-based music,  
-inspired by the techno sound of that era.  
+inspired by the techno sound of that era, modular synthesizers and the eurorack format.  
 This site began as a landing page for that project, but over time, 
 It became a creative sandbox -  
 especially for **experimenting with native SVG animations** and minimal web design.  
-A snapshot of that creative era.
 
 
 ```bash
