@@ -149,7 +149,7 @@ body::after {
     padding: 1rem;
 }
 
-.social a img {
+.social a svg {
     width: 2rem;
     height: 2rem;
     display: inline-block;
