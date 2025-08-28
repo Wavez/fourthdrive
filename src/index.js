@@ -1,3 +1,6 @@
+import './style.css'
+import Iconify from '@iconify/iconify';
+
 const socialContainer = document.querySelector(".social");
 const iconElements = Array.from(socialContainer.children);
 const GLITCH_INTERVAL_MS = 500;
@@ -46,4 +49,3 @@ socialContainer.addEventListener("mouseleave", startGlitchSequence);
 
 startGlitchSequence();
 
-export default () => {};
