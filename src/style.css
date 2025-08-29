@@ -27,9 +27,6 @@ body {
 
 
 #logo {
-    display: inline-block;
-    position: relative;
-    z-index: 1;
     animation: intenseLogoGlitch 5s infinite;
 }
 
