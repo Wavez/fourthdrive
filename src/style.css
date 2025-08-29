@@ -27,11 +27,11 @@ body {
 
 
 #logo {
-    animation: intenseLogoGlitch 5s infinite;
+    animation: logoGlitch 5s infinite;
 }
 
 
-@keyframes intenseLogoGlitch {
+@keyframes logoGlitch {
     0%, 78%, 100% {
         transform: rotate(0deg) translate(0,0) scale(1);
         filter: none;
