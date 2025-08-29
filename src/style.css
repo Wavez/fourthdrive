@@ -172,3 +172,26 @@ body::after {
         transition: none !important;
     }
 }
+
+/* Logo crimson flicker returning to white */
+@keyframes logoCrimsonFlicker {
+    0%, 96%, 100% {
+        filter: none;
+    }
+    /* quick double flicker */
+    97% {
+        /* approximate crimson tint */
+        filter: invert(16%) sepia(96%) saturate(7470%) hue-rotate(334deg) brightness(95%) contrast(110%);
+    }
+    98% {
+        filter: none;
+    }
+    99% {
+        filter: invert(16%) sepia(96%) saturate(7470%) hue-rotate(334deg) brightness(95%) contrast(110%);
+    }
+}
+
+/* Apply flicker to the logo image */
+#logo img {
+    animation: logoCrimsonFlicker 8s infinite;
+}
