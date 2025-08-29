@@ -25,6 +25,62 @@ body {
     animation: BackgroundGradient 8s ease-in-out infinite;
 }
 
+
+#logo {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    animation: intenseLogoGlitch 5s infinite;
+}
+
+
+@keyframes intenseLogoGlitch {
+    0%, 78%, 100% {
+        transform: rotate(0deg) translate(0,0) scale(1);
+        filter: none;
+        opacity: 1;
+    }
+
+    79% {
+        filter: drop-shadow(8px 0 var(--glitch-cyan))
+        drop-shadow(-8px 0 var(--glitch-red))
+        brightness(220%) contrast(130%);
+        transform: rotate(-3deg) translate(4px, 1px) scale(1.12);
+        opacity: 0.9;
+    }
+
+    80% {
+        filter: drop-shadow(-7px 4px var(--glitch-cyan))
+        drop-shadow(7px -4px var(--glitch-red))
+        brightness(200%) contrast(120%);
+        transform: rotate(3deg) translate(-4px, -1px) scale(1.12);
+        opacity: 0.95;
+    }
+
+    81% {
+        filter: drop-shadow(6px -6px var(--glitch-cyan))
+        drop-shadow(-6px 6px var(--glitch-red))
+        brightness(210%) contrast(125%);
+        transform: rotate(-2deg) translate(3px, 2px) scale(1.10);
+        opacity: 0.9;
+    }
+
+    82% {
+        filter: drop-shadow(-8px 0 var(--glitch-cyan))
+        drop-shadow(8px 0 var(--glitch-red))
+        brightness(220%) contrast(130%);
+        transform: rotate(2deg) translate(-4px, 2px) scale(1.12);
+        opacity: 0.95;
+    }
+
+    83% {
+        filter: none;
+        transform: rotate(0deg) translate(0,0) scale(1);
+        opacity: 1;
+    }
+}
+
+
 /* Background gradient animation */
 @keyframes BackgroundGradient {
     0% {
@@ -171,27 +227,4 @@ body::after {
         animation: none !important;
         transition: none !important;
     }
-}
-
-/* Logo crimson flicker returning to white */
-@keyframes logoCrimsonFlicker {
-    0%, 96%, 100% {
-        filter: none;
-    }
-    /* quick double flicker */
-    97% {
-        /* approximate crimson tint */
-        filter: invert(16%) sepia(96%) saturate(7470%) hue-rotate(334deg) brightness(95%) contrast(110%);
-    }
-    98% {
-        filter: none;
-    }
-    99% {
-        filter: invert(16%) sepia(96%) saturate(7470%) hue-rotate(334deg) brightness(95%) contrast(110%);
-    }
-}
-
-/* Apply flicker to the logo image */
-#logo img {
-    animation: logoCrimsonFlicker 8s infinite;
 }
