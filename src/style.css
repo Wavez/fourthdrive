@@ -18,6 +18,7 @@
 iframe#spotify-player {
     border: none;
     opacity: 0;
+    margin-top: 1rem;
 }
 
 @keyframes spotify-fade-in {
@@ -184,7 +185,6 @@ body::after {
     align-items: flex-start;
     flex-direction: column;
     min-height: 100dvh;
-    padding: 2rem;
 }
 
 .container > * {
