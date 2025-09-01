@@ -15,9 +15,39 @@
     );
 }
 
-iframe {
+iframe#spotify-player {
     border: none;
+    opacity: 0;
 }
+
+@keyframes spotify-fade-in {
+    0% {
+        transform: translateY(50%) scale(0.95);
+        opacity: 0;
+    }
+    30% {
+        transform: translateY(-5%) scale(1.02); /* movement overshoot */
+        opacity: 0; /* keep invisible longer */
+    }
+    55% {
+        transform: translateY(2%) scale(0.99); /* slight bounce back */
+        opacity: 0.5; /* start fading in gradually */
+    }
+    80% {
+        transform: translateY(0) scale(1);
+        opacity: 1.05; /* subtle opacity overshoot */
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1; /* final settled state */
+    }
+}
+
+.animate-spotify-fade-in {
+    animation: spotify-fade-in 2s ease-out forwards;
+}
+
+
 
 
 body {
@@ -38,46 +68,38 @@ body {
 
 @keyframes logoGlitch {
     0%, 78%, 100% {
-        transform: rotate(0deg) translate(0,0) scale(1);
+        transform: rotate(0deg) translate(0, 0) scale(1);
         filter: none;
         opacity: 1;
     }
 
     79% {
-        filter: drop-shadow(8px 0 var(--glitch-cyan))
-        drop-shadow(-8px 0 var(--glitch-red))
-        brightness(220%) contrast(130%);
+        filter: drop-shadow(8px 0 var(--glitch-cyan)) drop-shadow(-8px 0 var(--glitch-red)) brightness(220%) contrast(130%);
         transform: rotate(-3deg) translate(4px, 1px) scale(1.12);
         opacity: 0.9;
     }
 
     80% {
-        filter: drop-shadow(-7px 4px var(--glitch-cyan))
-        drop-shadow(7px -4px var(--glitch-red))
-        brightness(200%) contrast(120%);
+        filter: drop-shadow(-7px 4px var(--glitch-cyan)) drop-shadow(7px -4px var(--glitch-red)) brightness(200%) contrast(120%);
         transform: rotate(3deg) translate(-4px, -1px) scale(1.12);
         opacity: 0.95;
     }
 
     81% {
-        filter: drop-shadow(6px -6px var(--glitch-cyan))
-        drop-shadow(-6px 6px var(--glitch-red))
-        brightness(210%) contrast(125%);
+        filter: drop-shadow(6px -6px var(--glitch-cyan)) drop-shadow(-6px 6px var(--glitch-red)) brightness(210%) contrast(125%);
         transform: rotate(-2deg) translate(3px, 2px) scale(1.10);
         opacity: 0.9;
     }
 
     82% {
-        filter: drop-shadow(-8px 0 var(--glitch-cyan))
-        drop-shadow(8px 0 var(--glitch-red))
-        brightness(220%) contrast(130%);
+        filter: drop-shadow(-8px 0 var(--glitch-cyan)) drop-shadow(8px 0 var(--glitch-red)) brightness(220%) contrast(130%);
         transform: rotate(2deg) translate(-4px, 2px) scale(1.12);
         opacity: 0.95;
     }
 
     83% {
         filter: none;
-        transform: rotate(0deg) translate(0,0) scale(1);
+        transform: rotate(0deg) translate(0, 0) scale(1);
         opacity: 1;
     }
 }

@@ -1,14 +1,20 @@
 import './style.css'
 
+const iframe = document.getElementById('spotify-player');
 const socialContainer = document.querySelector(".social");
 const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 const iconElements = socialContainer ? Array.from(socialContainer.children) : [];
+
 const GLITCH_INTERVAL_MS = 500;
 const RESET_INTERVAL_MS = 12 * GLITCH_INTERVAL_MS;
 
 let currentIndex = 0;
 let glitchInterval = null;
 let resetInterval = null;
+
+iframe.addEventListener('load', () => {
+    iframe.classList.add('animate-spotify-fade-in');
+});
 
 function advanceGlitch() {
     if (currentIndex >= iconElements.length) {
