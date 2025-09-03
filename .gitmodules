@@ -1,0 +1,3 @@
+[submodule "diagrams"]
+	path = diagrams
+	url = git@github.com:Wavez/fourthdrive-private.git
