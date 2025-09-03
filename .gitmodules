@@ -1,4 +1,4 @@
-[submodule "diagrams"]
-	path = diagrams
+[submodule "private"]
+	path = private
 	url = git@github.com:Wavez/fourthdrive-private.git
 	branch = main
