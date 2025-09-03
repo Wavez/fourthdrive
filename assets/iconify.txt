@@ -1,3 +1,0 @@
-mdi-light--play.svg to play.svg
-mdi--present-outline.svg to present.svg
-line-md--instagram.svg to instagram.svg
