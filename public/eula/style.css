@@ -83,6 +83,29 @@ p {
     margin: 0.5em 0;
 }
 
+ul {
+    margin: 0.5em 0 1em 2em;
+    padding-left: 0;
+}
+
+li {
+    margin: 0.5em 0;
+    line-height: 1.6;
+}
+
+/* Hebrew RTL list styling */
+.hebrew ul {
+    margin: 0.5em 2em 1em 0;
+    padding-right: 0;
+    direction: rtl;
+}
+
+.hebrew li {
+    margin: 0.5em 0;
+    line-height: 1.6;
+    direction: rtl;
+}
+
 .hebrew {
     display: none;
     direction: rtl;
@@ -100,8 +123,9 @@ p {
     margin-top: 40px;
     font-style: italic;
     text-align: center;
-    padding: 10px;
-    background: var(--closing-bg-light);
+    padding: 15px;
+    background: var(--friendly-bg-light);
+    border-left: 4px solid var(--border-color-light);
     border-radius: 4px;
 }
 
