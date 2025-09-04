@@ -4,37 +4,119 @@
     <meta charset="UTF-8">
     <title>Fourth Drive End-User License Agreement (EULA)</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; color: #222; }
-        h1, h2 { color: #333; }
-        h1 { font-size: 1.8em; margin-top: 1em; }
-        h2 { font-size: 1.4em; margin-top: 1em; }
-        p, li { margin: 0.5em 0; }
-        ul { margin: 0.5em 0 1em 2em; }
-        .hebrew { display: none; direction: rtl; }
-        .lang-btn { margin-bottom: 20px; padding: 8px 16px; font-size: 1em; cursor: pointer; }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #222;
+            background-color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark {
+            background-color: #121212;
+            color: #eee;
+        }
+
+        h1, h2 {
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        body.dark h1, body.dark h2 {
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            margin-top: 1em;
+        }
+
+        h2 {
+            font-size: 1.4em;
+            margin-top: 1em;
+        }
+
+        p, li {
+            margin: 0.5em 0;
+        }
+
+        ul {
+            margin: 0.5em 0 1em 2em;
+        }
+
+        .hebrew {
+            display: none;
+            direction: rtl;
+        }
+
+        .lang-btn, .theme-btn {
+            margin-bottom: 20px;
+            padding: 8px 16px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .friendly-note {
+            background: #f5f5f5;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            margin-bottom: 20px;
+        }
+        body.dark .friendly-note {
+            background: #1e1e1e;
+            border-left-color: #81C784;
+        }
+
+        .closing-note {
+            margin-top: 40px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
 
+<!-- Language Toggle -->
 <button class="lang-btn" onclick="toggleLang()">עברית / English</button>
+<!-- Dark/Light Toggle -->
+<button class="theme-btn" onclick="toggleTheme()">🌞 / 🌙</button>
 
 <div id="english">
+    <div class="friendly-note">
+        <p>Hey there! 🚀 Thanks for grabbing this product. Before diving in, take a quick peek at the EULA below—the
+            legal mumbo-jumbo that keeps everyone out of trouble 🙏.</p>
+    </div>
+
     <h1>Fourth Drive End-User License Agreement (EULA)</h1>
 
-    <p>This End-User License Agreement ("EULA") is a legal agreement between you and <strong>Fourth Drive</strong>. This EULA governs your acquisition and use of Fourth Drive software ("Software") directly from Fourth Drive or through an authorized reseller or distributor ("Reseller"). Please read this EULA carefully before installing or using the Software.</p>
+    <p>This End-User License Agreement ("EULA") is a legal agreement between you and <strong>Fourth Drive</strong>. This
+        EULA governs your acquisition and use of Fourth Drive software ("Software") directly from Fourth Drive or
+        through an authorized reseller or distributor ("Reseller"). Please read this EULA carefully before installing or
+        using the Software.</p>
 
-    <p>It provides a license to use the Software and contains warranty and liability disclaimers. If you register for a free trial, download the Software for free, or obtain it via a free coupon or promotion, this EULA will also govern your use of the Software. By installing and/or using the Software, you confirm your acceptance of the Software and agree to be bound by this EULA.</p>
+    <p>It provides a license to use the Software and contains warranty and liability disclaimers. If you register for a
+        free trial, download the Software for free, or obtain it via a free coupon or promotion, this EULA will also
+        govern your use of the Software. By installing and/or using the Software, you confirm your acceptance of the
+        Software and agree to be bound by this EULA.</p>
 
-    <p>If you are entering into this EULA on behalf of a company or other legal entity, you represent that you have authority to bind such entity and its affiliates to these terms. If you do not have such authority or do not agree to these terms, do not install or use the Software.</p>
+    <p>If you are entering into this EULA on behalf of a company or other legal entity, you represent that you have
+        authority to bind such entity and its affiliates to these terms. If you do not have such authority or do not
+        agree to these terms, do not install or use the Software.</p>
 
-    <p>This EULA applies only to the Software supplied by Fourth Drive, including updates, supplements, Internet-based services, and support services, unless other terms are provided with those items. If other terms accompany such items, those terms apply.</p>
+    <p>This EULA applies only to the Software supplied by Fourth Drive, including updates, supplements, Internet-based
+        services, and support services, unless other terms are provided with those items. If other terms accompany such
+        items, those terms apply.</p>
 
     <h2>License Grant</h2>
-    <p>Fourth Drive grants you a personal, non-transferable, non-exclusive license to use the Software on your devices in accordance with this EULA. You may install the Software on any device under your control (e.g., PC, laptop, mobile, or tablet), provided the device meets the Software’s minimum requirements.</p>
+    <p>Fourth Drive grants you a personal, non-transferable, non-exclusive license to use the Software on your devices
+        in accordance with this EULA. You may install the Software on any device under your control (e.g., PC, laptop,
+        mobile, or tablet), provided the device meets the Software’s minimum requirements.</p>
 
     <p>You are not permitted to:</p>
     <ul>
-        <li>Combine the Software with or incorporate it into any other software, decompile, disassemble, reverse engineer, or attempt such actions.</li>
+        <li>Combine the Software with or incorporate it into any other software, decompile, disassemble, reverse
+            engineer, or attempt such actions.
+        </li>
         <li>Reproduce, copy, distribute, or resell the Software for commercial purposes.</li>
         <li>Use the Software in violation of any local, national, or international law.</li>
         <li>Use the Software in any way Fourth Drive considers a breach of this EULA.</li>
@@ -46,45 +128,80 @@
     <p>All other trademarks are the property of their respective owners.</p>
 
     <h2>Support</h2>
-    <p>Fourth Drive will make a reasonable effort to provide support for the Software via email and/or published communication channels. <strong>Support is provided on a best-effort basis and may be discontinued at any time without liability.</strong></p>
-    <p>Before contacting support at <strong>support@fourthdrive.com</strong>, please use the included guides and incident reporting system with your download to resolve most issues quickly.</p>
+    <p>Fourth Drive will make a reasonable effort to provide support for the Software via email and/or published
+        communication channels. <strong>Support is provided on a best-effort basis and may be discontinued at any time
+            without liability.</strong></p>
+    <p>Before contacting support at <strong>support@fourthdrive.com</strong>, please use the included guides and
+        incident reporting system with your download to resolve most issues quickly.</p>
 
     <h2>No Refunds</h2>
-    <p>All sales are final. Due to the digital nature of this software, no returns or refunds can be issued, except where required by law. Please ensure the software meets your needs before purchasing.</p>
+    <p>All sales are final. Due to the digital nature of this software, no returns or refunds can be issued, except
+        where required by law. Please ensure the software meets your needs before purchasing.</p>
 
     <h2>Disclaimer</h2>
-    <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, FOURTH DRIVE AND ITS AUTHORS SPECIFICALLY DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR PURPOSE. FOURTH DRIVE DOES NOT WARRANT THAT THE SOFTWARE WILL MEET YOUR REQUIREMENTS OR THAT IT WILL OPERATE ERROR-FREE OR UNINTERRUPTED. TO THE MAXIMUM EXTENT PERMITTED BY LAW, FOURTH DRIVE SHALL NOT BE LIABLE FOR ANY DAMAGE THE SOFTWARE MAY CAUSE OR DAMAGES ARISING OUT OF USE OR INABILITY TO USE THE SOFTWARE, INCLUDING SPECIAL, INCIDENTAL, CONSEQUENTIAL, OR OTHER DAMAGES. <strong>IN NO EVENT SHALL FOURTH DRIVE’S TOTAL LIABILITY EXCEED 1 USD (ONE UNITED STATES DOLLAR) OR ITS EQUIVALENT IN ISRAELI SHEKELS, EXCEPT WHERE SUCH LIMITATION IS PROHIBITED BY MANDATORY LAW.</strong></p>
+    <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, FOURTH DRIVE AND ITS AUTHORS SPECIFICALLY DISCLAIM ALL WARRANTIES,
+        EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND
+        FITNESS FOR A PARTICULAR PURPOSE. FOURTH DRIVE DOES NOT WARRANT THAT THE SOFTWARE WILL MEET YOUR REQUIREMENTS OR
+        THAT IT WILL OPERATE ERROR-FREE OR UNINTERRUPTED. TO THE MAXIMUM EXTENT PERMITTED BY LAW, FOURTH DRIVE SHALL NOT
+        BE LIABLE FOR ANY DAMAGE THE SOFTWARE MAY CAUSE OR DAMAGES ARISING OUT OF USE OR INABILITY TO USE THE SOFTWARE,
+        INCLUDING SPECIAL, INCIDENTAL, CONSEQUENTIAL, OR OTHER DAMAGES. <strong>IN NO EVENT SHALL FOURTH DRIVE’S TOTAL
+            LIABILITY EXCEED 1 USD (ONE UNITED STATES DOLLAR) OR ITS EQUIVALENT IN ISRAELI SHEKELS, EXCEPT WHERE SUCH
+            LIMITATION IS PROHIBITED BY MANDATORY LAW.</strong></p>
 
     <h2>Intellectual Property and Ownership</h2>
-    <p>Fourth Drive retains all ownership of the Software as originally downloaded and any subsequent downloads. The Software, including copyright and other intellectual property rights, remains the property of Fourth Drive. Fourth Drive reserves the right to grant licenses to third parties.</p>
+    <p>Fourth Drive retains all ownership of the Software as originally downloaded and any subsequent downloads. The
+        Software, including copyright and other intellectual property rights, remains the property of Fourth Drive.
+        Fourth Drive reserves the right to grant licenses to third parties.</p>
 
     <h2>Termination</h2>
-    <p>This EULA is effective from the date of first use and continues until terminated. It will terminate immediately if you fail to comply with any term. Upon termination, your license ends and you must stop all access and use. Provisions that by nature survive termination remain in effect.</p>
+    <p>This EULA is effective from the date of first use and continues until terminated. It will terminate immediately
+        if you fail to comply with any term. Upon termination, your license ends and you must stop all access and use.
+        Provisions that by nature survive termination remain in effect.</p>
 
     <h2>Updates and Future Add-ons</h2>
-    <p>This EULA also applies to future updates, add-ons, and internet-based services, and support services, unless otherwise stated. Use of any new update or add-on constitutes acceptance of the new terms before installation or use.<strong>You must accept any new terms provided with updates before installing or using them.</strong></p>
+    <p>This EULA also applies to future updates, add-ons, and internet-based services, and support services, unless
+        otherwise stated. Use of any new update or add-on constitutes acceptance of the new terms before installation or
+        use.<strong>You must accept any new terms provided with updates before installing or using them.</strong></p>
 
     <h2>Governing Law</h2>
-    <p>This EULA and any dispute arising out of it are governed by the laws of the State of Israel. <strong>Any disputes shall be brought exclusively before the competent courts of Tel Aviv, unless otherwise required by mandatory law.</strong></p>
+    <p>This EULA and any dispute arising out of it are governed by the laws of the State of Israel. <strong>Any disputes
+        shall be brought exclusively before the competent courts of Tel Aviv, unless otherwise required by mandatory
+        law.</strong></p>
 
     <h2>Entire Agreement</h2>
-    <p>This EULA constitutes the entire agreement between you and Fourth Drive regarding the Software and supersedes all prior agreements or understandings.</p>
+    <p>This EULA constitutes the entire agreement between you and Fourth Drive regarding the Software and supersedes all
+        prior agreements or understandings.</p>
+
+    <div class="closing-note">
+        <p>Phew… that was legalese! Thanks for reading and enjoy using Fourth Drive 🚀.</p>
+    </div>
 </div>
 
 <!-- Hebrew Version -->
 <div id="hebrew" class="hebrew">
+    <div class="friendly-note">
+        <p>היי! מניינים? 🚀 תודה שבחרת במוצר. לפני שמתחילים, קרא/י את הסכם הרישיון למשתמש (EULA) למטה – כל הבירוקרטיה
+            המשפטית ששומרת על כולם 🙏.</p>
+    </div>
     <h1>הסכם רישיון שימוש – Fourth Drive (EULA)</h1>
 
-    <p>הסכם רישיון שימוש זה ("EULA") הוא הסכם משפטי בין המשתמש לבין <strong>Fourth Drive</strong>. הסכם זה מסדיר את רכישתך ושימושך בתוכנת Fourth Drive ("התוכנה") ישירות מ-Fourth Drive או דרך משווק מורשה ("מפיץ"). אנא קרא את ההסכם בעיון לפני ההתקנה או השימוש בתוכנה.</p>
+    <p>הסכם רישיון שימוש זה ("EULA") הוא הסכם משפטי בין המשתמש לבין <strong>Fourth Drive</strong>. הסכם זה מסדיר את
+        רכישתך ושימושך בתוכנת Fourth Drive ("התוכנה") ישירות מ-Fourth Drive או דרך משווק מורשה ("מפיץ"). אנא קרא את
+        ההסכם בעיון לפני ההתקנה או השימוש בתוכנה.</p>
 
-    <p>הסכם זה מעניק רישיון שימוש בתוכנה וכולל הצהרות בנוגע לאחריות והגבלותיה. אם נרשמת לניסיון חינמי, הורדת את התוכנה בחינם, או קיבלת אותה באמצעות קופון או מבצע חינמי, הסכם זה יחול גם על השימוש שלך בתוכנה. על ידי התקנה או שימוש בתוכנה, אתה מאשר את הסכמתך להיות כפוף להסכם זה.</p>
+    <p>הסכם זה מעניק רישיון שימוש בתוכנה וכולל הצהרות בנוגע לאחריות והגבלותיה. אם נרשמת לניסיון חינמי, הורדת את התוכנה
+        בחינם, או קיבלת אותה באמצעות קופון או מבצע חינמי, הסכם זה יחול גם על השימוש שלך בתוכנה. על ידי התקנה או שימוש
+        בתוכנה, אתה מאשר את הסכמתך להיות כפוף להסכם זה.</p>
 
-    <p>אם אתה חותם על ההסכם בשם חברה או ישות משפטית אחרת, אתה מצהיר שיש לך סמכות לחייב את הישות ואת חברות הבת שלה לתנאים אלו. אם אין לך סמכות כזו או אינך מסכים לתנאים, אין להתקין או להשתמש בתוכנה.</p>
+    <p>אם אתה חותם על ההסכם בשם חברה או ישות משפטית אחרת, אתה מצהיר שיש לך סמכות לחייב את הישות ואת חברות הבת שלה לתנאים
+        אלו. אם אין לך סמכות כזו או אינך מסכים לתנאים, אין להתקין או להשתמש בתוכנה.</p>
 
-    <p>הסכם זה חל אך ורק על התוכנה שסופקה על ידי Fourth Drive, כולל עדכונים, תוספים, שירותי אינטרנט ושירותי תמיכה, אלא אם נאמר אחרת. אם קיימים תנאים אחרים עם פריטים אלו, תנאים אלה יחולו.</p>
+    <p>הסכם זה חל אך ורק על התוכנה שסופקה על ידי Fourth Drive, כולל עדכונים, תוספים, שירותי אינטרנט ושירותי תמיכה, אלא
+        אם נאמר אחרת. אם קיימים תנאים אחרים עם פריטים אלו, תנאים אלה יחולו.</p>
 
     <h2>רישיון שימוש</h2>
-    <p>Fourth Drive מעניקה לך רישיון אישי, בלתי־בלעדי ובלתי־ניתן להעברה לשימוש בתוכנה על מכשיריך בהתאם להסכם זה. ניתן להתקין את התוכנה על כל מכשיר שבשליטתך (למשל מחשב, נייד, טאבלט), בכפוף לעמידה בדרישות המינימום של התוכנה.</p>
+    <p>Fourth Drive מעניקה לך רישיון אישי, בלתי־בלעדי ובלתי־ניתן להעברה לשימוש בתוכנה על מכשיריך בהתאם להסכם זה. ניתן
+        להתקין את התוכנה על כל מכשיר שבשליטתך (למשל מחשב, נייד, טאבלט), בכפוף לעמידה בדרישות המינימום של התוכנה.</p>
 
     <p>אינך רשאי:</p>
     <ul>
@@ -100,29 +217,43 @@
     <p>כל סימן מסחרי אחר הוא רכושו של בעליו.</p>
 
     <h2>תמיכה</h2>
-    <p>Fourth Drive תעשה מאמץ סביר לספק תמיכה בתוכנה באמצעות דוא"ל ו/או ערוצי תקשורת שפורסמו. <strong>התמיכה ניתנת במיטב המאמצים ועשויה להיפסק בכל עת ללא אחריות.</strong></p>
-    <p>לפני פנייה לתמיכה בכתובת <strong>support@fourthdrive.com</strong>, יש להשתמש במדריכים ובמערכת דיווח התקלות הכלולים בהורדה כדי לפתור את רוב הבעיות במהירות.</p>
+    <p>Fourth Drive תעשה מאמץ סביר לספק תמיכה בתוכנה באמצעות דוא"ל ו/או ערוצי תקשורת שפורסמו. <strong>התמיכה ניתנת במיטב
+        המאמצים ועשויה להיפסק בכל עת ללא אחריות.</strong></p>
+    <p>לפני פנייה לתמיכה בכתובת <strong>support@fourthdrive.com</strong>, יש להשתמש במדריכים ובמערכת דיווח התקלות
+        הכלולים בהורדה כדי לפתור את רוב הבעיות במהירות.</p>
 
     <h2>אין החזרים</h2>
-    <p>כל המכירות הן סופיות. בשל טבעה הדיגיטלי של תוכנה זו, אין אפשרות להחזיר או לבקש החזר, למעט במקרים שחוק מחייב אחרת. יש לוודא שהתוכנה מתאימה לצרכים שלך לפני הרכישה.</p>
+    <p>כל המכירות הן סופיות. בשל טבעה הדיגיטלי של תוכנה זו, אין אפשרות להחזיר או לבקש החזר, למעט במקרים שחוק מחייב אחרת.
+        יש לוודא שהתוכנה מתאימה לצרכים שלך לפני הרכישה.</p>
 
     <h2>כתב ויתור ואחריות</h2>
-    <p>במידה המרבית המותרת לפי דין, Fourth Drive ומפתחי התוכנה מסירים כל אחריות, מפורשת או משתמעת, לרבות אחריות משתמעת לאי-הפרה, סחירות, התאמה למטרה מסוימת, ואחריות לנזקים ישירים או עקיפים לרכוש, למחשב או לכל מערכת אחרת. Fourth Drive אינה מבטיחה שהתוכנה תעמוד בדרישותיך או תפעל ללא תקלות או הפסקות. כל נזק או הפסד שייגרם כתוצאה מהשימוש בתוכנה, לרבות נזקים מיוחדים, מקריים, עקיפים או כל נזק אחר, הוא באחריות המשתמש בלבד. <strong>בכל מקרה, האחריות הכוללת של Fourth Drive מוגבלת ל-1 דולר ארה"ב או השווי שלו בשקלים, למעט במקרים שחוק מחייב אחרת.</strong></p>
+    <p>במידה המרבית המותרת לפי דין, Fourth Drive ומפתחי התוכנה מסירים כל אחריות, מפורשת או משתמעת, לרבות אחריות משתמעת
+        לאי-הפרה, סחירות, התאמה למטרה מסוימת, ואחריות לנזקים ישירים או עקיפים לרכוש, למחשב או לכל מערכת אחרת. Fourth
+        Drive אינה מבטיחה שהתוכנה תעמוד בדרישותיך או תפעל ללא תקלות או הפסקות. כל נזק או הפסד שייגרם כתוצאה מהשימוש
+        בתוכנה, לרבות נזקים מיוחדים, מקריים, עקיפים או כל נזק אחר, הוא באחריות המשתמש בלבד. <strong>בכל מקרה, האחריות
+            הכוללת של Fourth Drive מוגבלת ל-1 דולר ארה"ב או השווי שלו בשקלים, למעט במקרים שחוק מחייב אחרת.</strong></p>
 
     <h2>קניין רוחני ובעלות</h2>
-    <p>Fourth Drive שומרת על כל הזכויות בתוכנה כפי שהורדה ומעודכנת על ידך. זכויות היוצרים והקניין הרוחני נשארים בבעלות Fourth Drive. Fourth Drive שומרת לעצמה את הזכות להעניק רישיונות לצדדים שלישיים.</p>
+    <p>Fourth Drive שומרת על כל הזכויות בתוכנה כפי שהורדה ומעודכנת על ידך. זכויות היוצרים והקניין הרוחני נשארים בבעלות
+        Fourth Drive. Fourth Drive שומרת לעצמה את הזכות להעניק רישיונות לצדדים שלישיים.</p>
 
     <h2>סיום ההסכם</h2>
-    <p>הסכם זה בתוקף ממועד השימוש הראשון בתוכנה ונמשך עד לסיומו. ההסכם מסתיים מייד אם לא תעמוד בכל תנאי. עם סיום ההסכם, הרישיון שלך מסתיים ויש להפסיק כל שימוש בתוכנה. הוראות שצריכות לשרוד את הסיום נשארות בתוקף.</p>
+    <p>הסכם זה בתוקף ממועד השימוש הראשון בתוכנה ונמשך עד לסיומו. ההסכם מסתיים מייד אם לא תעמוד בכל תנאי. עם סיום ההסכם,
+        הרישיון שלך מסתיים ויש להפסיק כל שימוש בתוכנה. הוראות שצריכות לשרוד את הסיום נשארות בתוקף.</p>
 
     <h2>עדכונים ותוספים עתידיים</h2>
-    <p>הסכם זה חל גם על עדכונים, תוספים ושירותי אינטרנט עתידיים, אלא אם מצוין אחרת. <strong>שימוש בכל עדכון או תוסף חדש מחייב את קבלת התנאים החדשים לפני ההתקנה או השימוש בהם.</strong></p>
+    <p>הסכם זה חל גם על עדכונים, תוספים ושירותי אינטרנט עתידיים, אלא אם מצוין אחרת. <strong>שימוש בכל עדכון או תוסף חדש
+        מחייב את קבלת התנאים החדשים לפני ההתקנה או השימוש בהם.</strong></p>
 
     <h2>חוקי מדינה וסמכות שיפוט</h2>
-    <p>הסכם זה וכל סכסוך שיתגלה כפוף לחוקי מדינת ישראל. <strong>כל סכסוך יובא אך ורק בפני בתי המשפט המוסמכים בתל אביב, אלא אם נדרש אחרת לפי חוק מחייב.</strong></p>
+    <p>הסכם זה וכל סכסוך שיתגלה כפוף לחוקי מדינת ישראל. <strong>כל סכסוך יובא אך ורק בפני בתי המשפט המוסמכים בתל אביב,
+        אלא אם נדרש אחרת לפי חוק מחייב.</strong></p>
 
     <h2>הסכם מלא</h2>
     <p>הסכם זה מהווה את כל ההסכם בין המשתמש ל-Fourth Drive לגבי התוכנה ומבטל כל הסכם קודם.</p>
+    <div class="closing-note">
+        <p>אוי, זה היה משפטי! תודה שקראת וכיף שאת/ה איתנו! 🚀.</p>
+    </div>
 </div>
 
 
@@ -137,6 +268,10 @@
             en.style.display = 'none';
             he.style.display = 'block';
         }
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle('dark');
     }
 </script>
 
