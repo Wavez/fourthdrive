@@ -1,12 +1,12 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Fourth Drive",
+    "short_name": "Fourth Drive",
     "icons": [
         { "src": "/fav-icon/icon-192.png", "type": "image/png", "sizes": "192x192" },
         { "src": "/fav-icon/maskable.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" },
         { "src": "/fav-icon/icon-512.png", "type": "image/png", "sizes": "512x512" }
       ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "background_color": "#050505",
     "display": "standalone"
 }
