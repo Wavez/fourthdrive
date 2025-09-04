@@ -3,204 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Fourth Drive EULA</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            padding: 20px;
-            color: #222;
-            background-color: #fff;
-            transition: background-color 0.3s, color 0.3s;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        body.dark {
-            background-color: #121212;
-            color: #eee;
-        }
-
-        h1, h2 {
-            margin-top: 1em;
-            transition: color 0.3s;
-        }
-
-        h1 {
-            font-size: 1.8em;
-            color: #2c3e50;
-        }
-
-        h2 {
-            font-size: 1.4em;
-            color: #34495e;
-        }
-
-        body.dark h1, body.dark h2 {
-            color: #ecf0f1;
-        }
-
-        p {
-            margin: 0.5em 0;
-        }
-
-        .hebrew {
-            display: none;
-            direction: rtl;
-        }
-
-        .friendly-note {
-            background: #f5f5f5;
-            padding: 15px;
-            border-left: 4px solid #4CAF50;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-
-        body.dark .friendly-note {
-            background: #1e1e1e;
-            border-left-color: #81C784;
-        }
-
-        .closing-note {
-            margin-top: 40px;
-            font-style: italic;
-            text-align: center;
-            padding: 10px;
-            background: #f9f9f9;
-            border-radius: 4px;
-        }
-
-        body.dark .closing-note {
-            background: #1a1a1a;
-        }
-
-        /* Toggle Container */
-        .toggle-container {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 30px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        body.dark .toggle-container {
-            background: #1e1e1e;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .toggle-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Toggle Switch Styles */
-        .toggle-switch {
-            display: flex;
-            background: #e9ecef;
-            border-radius: 50px;
-            padding: 4px;
-            position: relative;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            width: 110px;
-            height: 40px;
-        }
-
-        body.dark .toggle-switch {
-            background: #2d2d2d;
-        }
-
-        .toggle-option {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 32px;
-            border-radius: 50px;
-            z-index: 10;
-            position: absolute;
-            transition: color 0.3s;
-            cursor: pointer;
-            top: 4px;
-        }
-
-        .toggle-option[data-lang="en"],
-        .toggle-option[data-theme="light"] {
-            left: 4px;
-        }
-
-        .toggle-option[data-lang="he"],
-        .toggle-option[data-theme="dark"] {
-            right: 4px;
-        }
-
-        .toggle-option.active {
-            color: white;
-        }
-
-        .toggle-slider {
-            position: absolute;
-            height: 32px;
-            width: 50px;
-            border-radius: 50px;
-            background: #4CAF50;
-            transition: all 0.3s ease;
-            z-index: 0;
-            left: 4px;
-            top: 4px;
-        }
-
-        .lang-toggle.hebrew .toggle-slider {
-            transform: translateX(52px);
-        }
-
-        .theme-toggle.dark .toggle-slider {
-            transform: translateX(52px);
-        }
-
-        .toggle-label {
-            margin-bottom: 10px;
-            font-weight: bold;
-            font-size: 14px;
-            color: #666;
-        }
-
-        body.dark .toggle-label {
-            color: #ccc;
-        }
-
-        .flag, .theme-icon {
-            font-size: 20px;
-            transition: transform 0.2s;
-            pointer-events: none;
-        }
-
-        .toggle-option:hover .flag,
-        .toggle-option:hover .theme-icon {
-            transform: scale(1.1);
-        }
-
-        .content {
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        body.dark .content {
-            background: #1a1a1a;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -208,26 +11,34 @@
 <div class="toggle-container">
     <div class="toggle-wrapper">
         <div class="toggle-label">Language</div>
-        <div class="toggle-switch lang-toggle" id="lang-toggle">
+        <div class="toggle-switch lang-toggle" id="lang-toggle" 
+             role="switch" 
+             aria-label="Language selector" 
+             aria-checked="false"
+             tabindex="0">
             <div class="toggle-slider"></div>
             <div class="toggle-option active" data-lang="en">
-                <span class="flag">🇺🇸</span>
+                <span class="flag" aria-label="English">🇺🇸</span>
             </div>
             <div class="toggle-option" data-lang="he">
-                <span class="flag">🇮🇱</span>
+                <span class="flag" aria-label="Hebrew">🇮🇱</span>
             </div>
         </div>
     </div>
 
     <div class="toggle-wrapper">
         <div class="toggle-label">Theme</div>
-        <div class="toggle-switch theme-toggle" id="theme-toggle">
+        <div class="toggle-switch theme-toggle" id="theme-toggle"
+             role="switch" 
+             aria-label="Theme selector" 
+             aria-checked="false"
+             tabindex="0">
             <div class="toggle-slider"></div>
             <div class="toggle-option active" data-theme="light">
-                <span class="theme-icon">☀️</span>
+                <span class="theme-icon" aria-label="Light theme">☀️</span>
             </div>
             <div class="toggle-option" data-theme="dark">
-                <span class="theme-icon">🌙</span>
+                <span class="theme-icon" aria-label="Dark theme">🌙</span>
             </div>
         </div>
     </div>
@@ -444,65 +255,7 @@
     </div>
 </div>
 
-<script>
-    // Language toggle functionality
-    const langToggle = document.getElementById('lang-toggle');
-    const langOptions = document.querySelectorAll('#lang-toggle .toggle-option');
-
-    langToggle.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        // Toggle between English and Hebrew
-        const isHebrew = langToggle.classList.contains('hebrew');
-
-        if (isHebrew) {
-            // Switch to English
-            langToggle.classList.remove('hebrew');
-            langOptions[0].classList.add('active');
-            langOptions[1].classList.remove('active');
-            document.getElementById('english').style.display = 'block';
-            document.getElementById('hebrew').style.display = 'none';
-            document.getElementById('closing-en').style.display = 'block';
-            document.getElementById('closing-he').style.display = 'none';
-        } else {
-            // Switch to Hebrew
-            langToggle.classList.add('hebrew');
-            langOptions[0].classList.remove('active');
-            langOptions[1].classList.add('active');
-            document.getElementById('english').style.display = 'none';
-            document.getElementById('hebrew').style.display = 'block';
-            document.getElementById('closing-en').style.display = 'none';
-            document.getElementById('closing-he').style.display = 'block';
-        }
-    });
-
-    // Theme toggle functionality
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeOptions = document.querySelectorAll('#theme-toggle .toggle-option');
-
-    themeToggle.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        // Toggle between light and dark
-        const isDark = document.body.classList.contains('dark');
-
-        if (isDark) {
-            // Switch to light
-            document.body.classList.remove('dark');
-            themeToggle.classList.remove('dark');
-            themeOptions[0].classList.add('active');
-            themeOptions[1].classList.remove('active');
-        } else {
-            // Switch to dark
-            document.body.classList.add('dark');
-            themeToggle.classList.add('dark');
-            themeOptions[0].classList.remove('active');
-            themeOptions[1].classList.add('active');
-        }
-    });
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
