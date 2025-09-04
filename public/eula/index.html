@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Fourth Drive End-User License Agreement (EULA) - Legal terms and conditions for software usage">
     <title>Fourth Drive EULA</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Toggle Container -->
-<div class="toggle-container">
+<!-- Control Panel -->
+<nav class="toggle-container" aria-label="EULA controls">
     <div class="toggle-wrapper">
         <div class="toggle-label">Language</div>
-        <div class="toggle-switch lang-toggle" id="language-toggle" 
-             role="switch" 
-             aria-label="Language selector" 
+        <div class="toggle-switch lang-toggle" id="language-toggle"
+             role="switch"
+             aria-label="Language selector"
              aria-checked="false"
              tabindex="0">
             <div class="toggle-slider"></div>
@@ -29,8 +32,8 @@
     <div class="toggle-wrapper">
         <div class="toggle-label">Theme</div>
         <div class="toggle-switch theme-toggle" id="theme-toggle"
-             role="switch" 
-             aria-label="Theme selector" 
+             role="switch"
+             aria-label="Theme selector"
              aria-checked="false"
              tabindex="0">
             <div class="toggle-slider"></div>
@@ -49,10 +52,10 @@
             🖨️
         </button>
     </div>
-</div>
+</nav>
 
-<div class="content">
-    <div id="english-content">
+<main class="content">
+    <section id="english-content" aria-label="English EULA content">
         <div class="friendly-note">
             <p>Hey there! 🚀 Thanks for grabbing this product. Before diving in, take a quick peek at the EULA below—the
                 legal mumbo-jumbo best enjoyed with your morning coffee 🙏.</p>
@@ -162,10 +165,10 @@
         <p>This EULA constitutes the entire agreement between you and Fourth Drive regarding the Software and supersedes
             all
             prior agreements or understandings.</p>
-    </div>
+    </section>
 
     <!-- Hebrew Version -->
-    <div id="hebrew-content" class="hebrew">
+    <section id="hebrew-content" class="hebrew" aria-label="Hebrew EULA content">
         <div class="friendly-note">
             <p>היי! מניינים? 🚀 תודה שבחרת במוצר. לפני שמתחילים, קרא/י את הסכם הרישיון למשתמש (EULA) למטה – כל הבירוקרטיה
                 המשפטית, משהו קליל להתחיל איתו את הבוקר 🙏.</p>
@@ -254,13 +257,14 @@
 
         <h2>הסכם מלא</h2>
         <p>הסכם זה מהווה את כל ההסכם בין המשתמש ל-Fourth Drive לגבי התוכנה ומבטל כל הסכם קודם.</p>
-    </div>
+    </section>
 
     <div class="closing-note">
         <p id="closing-en">Congrats, you made it through the legal jungle 🌴🐒 You’re officially ready to roll!</p>
-        <p id="closing-he" class="hebrew" style="display: none;">כל הכבוד על הסבלנות 🙌 עכשיו מגיע החלק המעניין באמת.</p>
+        <p id="closing-he" class="hebrew-content" style="display: none;">כל הכבוד על הסבלנות 🙌 עכשיו מגיע החלק המעניין
+            באמת.</p>
     </div>
-</div>
+</main>
 
 <script src="script.js"></script>
 

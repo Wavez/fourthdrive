@@ -1,6 +1,18 @@
 :root {
+    /* Color palette */
     --primary-color: #4CAF50;
     --primary-color-dark: #81C784;
+    
+    /* Spacing */
+    --spacing-xs: 0.5em;
+    --spacing-sm: 1em;
+    --spacing-md: 1.5em;
+    --spacing-lg: 2em;
+    --spacing-xl: 3em;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
     
     /* Light theme */
     --bg: #fff;
@@ -24,7 +36,7 @@ body {
     padding: 20px;
     color: var(--text);
     background-color: var(--bg);
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
     max-width: 800px;
     margin: 0 auto;
 }
@@ -54,8 +66,8 @@ body.dark {
 }
 
 h1, h2 {
-    margin-top: 1em;
-    transition: color 0.3s;
+    margin-top: var(--spacing-sm);
+    transition: color var(--transition-normal);
 }
 
 h1 {
@@ -73,39 +85,43 @@ body.dark h1, body.dark h2 {
 }
 
 p {
-    margin: 0.5em 0;
+    margin: var(--spacing-xs) 0;
 }
 
 ul {
-    margin: 0.5em 0 1em 2em;
+    margin: var(--spacing-xs) 0 var(--spacing-sm) var(--spacing-lg);
     padding-left: 0;
 }
 
 li {
-    margin: 0.5em 0;
+    margin: var(--spacing-xs) 0;
     line-height: 1.6;
 }
 
 /* Hebrew RTL list styling */
-.hebrew ul {
-    margin: 0.5em 2em 1em 0;
+#hebrew-content ul {
+    margin: var(--spacing-xs) var(--spacing-lg) var(--spacing-sm) 0;
     padding-right: 0;
     direction: rtl;
 }
 
-.hebrew li {
-    margin: 0.5em 0;
+#hebrew-content li {
+    margin: var(--spacing-xs) 0;
     line-height: 1.6;
     direction: rtl;
 }
 
-.hebrew {
+#hebrew-content {
     display: none;
     direction: rtl;
 }
 
-.english {
+#english-content {
     display: block;
+}
+
+.hebrew-content {
+    direction: rtl;
 }
 
 .friendly-note,
@@ -328,13 +344,13 @@ body.dark .toggle-label {
         page-break-inside: avoid;
     }
     
-    .hebrew {
+    #hebrew-content {
         direction: rtl;
         text-align: right;
     }
     
-    .hebrew h1,
-    .hebrew h2 {
+    #hebrew-content h1,
+    #hebrew-content h2 {
         text-align: right;
     }
     

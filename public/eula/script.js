@@ -1,3 +1,27 @@
+// Constants
+const DEBOUNCE_DELAY = 150;
+const KEYBOARD_ACTIVATION_KEYS = ['Enter', ' '];
+
+// Helper functions
+function updateToggleState(toggle, primaryOption, secondaryOption, shouldActivate, stateClass) {
+    toggle.classList.toggle(stateClass, shouldActivate);
+    primaryOption.classList.toggle('active', !shouldActivate);
+    secondaryOption.classList.toggle('active', shouldActivate);
+    toggle.setAttribute('aria-checked', shouldActivate.toString());
+}
+
+function updateContentVisibility(contentPairs, shouldActivate) {
+    contentPairs.forEach(([primaryContent, secondaryContent]) => {
+        const primaryElement = document.getElementById(primaryContent);
+        const secondaryElement = document.getElementById(secondaryContent);
+        
+        if (primaryElement && secondaryElement) {
+            primaryElement.style.display = shouldActivate ? 'none' : 'block';
+            secondaryElement.style.display = shouldActivate ? 'block' : 'none';
+        }
+    });
+}
+
 // Debounce utility
 function debounce(func, wait) {
     let timeout;
@@ -14,6 +38,11 @@ function debounce(func, wait) {
 // Create a toggle switch with state management and content switching
 function createToggleSwitch(toggleId, stateClass, contentPairs = []) {
     const toggle = document.getElementById(toggleId);
+    if (!toggle) {
+        console.warn(`Toggle element with ID '${toggleId}' not found`);
+        return;
+    }
+    
     const toggleOptions = document.querySelectorAll(`#${toggleId} .toggle-option`);
     const target = stateClass === 'dark' ? document.body : toggle;
     
@@ -36,37 +65,20 @@ function createToggleSwitch(toggleId, stateClass, contentPairs = []) {
             if (stateClass === 'dark') target.classList.add('light');
         }
         
-        // Update toggle classes and aria
-        toggle.classList.toggle(stateClass, shouldActivate);
-        primaryOption.classList.toggle('active', !shouldActivate);
-        secondaryOption.classList.toggle('active', shouldActivate);
-        toggle.setAttribute('aria-checked', shouldActivate.toString());
-        
-        // Toggle content pairs
-        contentPairs.forEach(([primaryContent, secondaryContent]) => {
-            const primaryElement = document.getElementById(primaryContent);
-            const secondaryElement = document.getElementById(secondaryContent);
-            if (shouldActivate) {
-                // Switching to secondary option (Hebrew/Dark)
-                primaryElement.style.display = 'none';
-                secondaryElement.style.display = 'block';
-            } else {
-                // Switching to primary option (English/Light)
-                primaryElement.style.display = 'block';
-                secondaryElement.style.display = 'none';
-            }
-        });
+        // Update toggle state and content visibility
+        updateToggleState(toggle, primaryOption, secondaryOption, shouldActivate, stateClass);
+        updateContentVisibility(contentPairs, shouldActivate);
         
         // Update body class for print styles
         if (stateClass === 'hebrew') {
             document.body.classList.toggle('hebrew-active', shouldActivate);
         }
-    }, 150);
+    }, DEBOUNCE_DELAY);
 
     // Event listeners
     toggle.addEventListener('click', handleToggle);
     toggle.addEventListener('keydown', (e) => {
-        if (['Enter', ' '].includes(e.key)) {
+        if (KEYBOARD_ACTIVATION_KEYS.includes(e.key)) {
             e.preventDefault();
             handleToggle(e);
         }
@@ -109,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Print button keyboard support
     printButton?.addEventListener('keydown', (e) => {
-        if (['Enter', ' '].includes(e.key)) {
+        if (KEYBOARD_ACTIVATION_KEYS.includes(e.key)) {
             e.preventDefault();
             window.print();
         }
