@@ -1,58 +1,76 @@
 import './style.css'
 
-const iframe = document.getElementById('spotify-player');
-const socialContainer = document.querySelector(".social");
-const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-const iconElements = socialContainer ? Array.from(socialContainer.children) : [];
+// Configuration
+const CONFIG = {
+    GLITCH_INTERVAL_MS: 500,
+    RESET_MULTIPLIER: 12
+};
 
-const GLITCH_INTERVAL_MS = 500;
-const RESET_INTERVAL_MS = 12 * GLITCH_INTERVAL_MS;
+// DOM elements
+const elements = {
+    iframe: document.getElementById('spotify-player'),
+    socialContainer: document.querySelector(".social")
+};
 
-let currentIndex = 0;
-let glitchInterval = null;
-let resetInterval = null;
+// State
+const state = {
+    currentIndex: 0,
+    glitchInterval: null,
+    resetInterval: null,
+    prefersReducedMotion: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+};
 
-iframe.addEventListener('load', () => {
-    iframe.classList.add('animate-spotify-fade-in');
+// Derived values
+const iconElements = elements.socialContainer ? Array.from(elements.socialContainer.children) : [];
+const resetIntervalMs = CONFIG.RESET_MULTIPLIER * CONFIG.GLITCH_INTERVAL_MS;
+
+// Spotify player initialization
+elements.iframe?.addEventListener('load', () => {
+    elements.iframe.classList.add('animate-spotify-fade-in');
 });
 
+// Glitch animation functions
 function advanceGlitch() {
-    if (currentIndex >= iconElements.length) {
+    if (state.currentIndex >= iconElements.length) {
         iconElements[iconElements.length - 1]?.classList.remove("glitch");
         return;
     }
 
-    const currentIcon = iconElements[currentIndex];
-    const previousIcon = iconElements[currentIndex - 1];
+    const currentIcon = iconElements[state.currentIndex];
+    const previousIcon = iconElements[state.currentIndex - 1];
 
     currentIcon?.classList.add("glitch");
     previousIcon?.classList.remove("glitch");
 
-    currentIndex++;
+    state.currentIndex++;
 }
 
 function startGlitchSequence() {
     stopGlitchSequence(); // Prevent duplicates
+    
+    // Reset to start immediately
+    state.currentIndex = 0;
 
-    glitchInterval = setInterval(advanceGlitch, GLITCH_INTERVAL_MS);
-    resetInterval = setInterval(() => {
-        currentIndex = 0;
-    }, RESET_INTERVAL_MS);
+    state.glitchInterval = setInterval(advanceGlitch, CONFIG.GLITCH_INTERVAL_MS);
+    state.resetInterval = setInterval(() => {
+        state.currentIndex = 0;
+    }, resetIntervalMs);
 }
 
 function stopGlitchSequence() {
-    clearInterval(glitchInterval);
-    clearInterval(resetInterval);
-    glitchInterval = null;
-    resetInterval = null;
+    clearInterval(state.glitchInterval);
+    clearInterval(state.resetInterval);
+    state.glitchInterval = null;
+    state.resetInterval = null;
 
-    const lastIcon = iconElements[currentIndex - 1];
+    const lastIcon = iconElements[state.currentIndex - 1];
     lastIcon?.classList.remove("glitch");
 }
 
-if (socialContainer && !prefersReducedMotion) {
-    socialContainer.addEventListener("mouseenter", stopGlitchSequence);
-    socialContainer.addEventListener("mouseleave", startGlitchSequence);
+// Initialize glitch animations if conditions are met
+if (elements.socialContainer && !state.prefersReducedMotion) {
+    elements.socialContainer.addEventListener("mouseenter", stopGlitchSequence);
+    elements.socialContainer.addEventListener("mouseleave", startGlitchSequence);
     startGlitchSequence();
 }
 

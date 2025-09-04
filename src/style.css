@@ -1,8 +1,21 @@
 :root {
+    /* Color palette */
     --glitch-cyan: cyan;
     --glitch-red: red;
-    --glitch-speed: 200ms;
-    --star-scroll-speed: 30s;
+    --star-color: #fff;
+    
+    /* Animation timing */
+    --glitch-duration: 200ms;
+    --star-scroll-duration: 30s;
+    --logo-glitch-duration: 5s;
+    --bg-gradient-duration: 8s;
+    --spotify-fade-duration: 2s;
+    
+    /* Layout */
+    --star-field-height: 4000px;
+    --star-field-offset: 2000px;
+    
+    /* Background gradient */
     --bg-gradient: linear-gradient(
             132deg,
             #050505,
@@ -13,6 +26,43 @@
             #0d1b2a,
             #050505
     );
+    
+    /* Star field patterns */
+    --star-field-small: radial-gradient(1px 1px at 5% 5%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 10% 90%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 15% 25%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 20% 75%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 25% 40%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 30% 60%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 35% 10%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 40% 90%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 45% 20%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 50% 80%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 55% 30%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 60% 70%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 65% 50%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 70% 15%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 75% 85%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 80% 35%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 85% 65%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 90% 45%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(1px 1px at 95% 25%, var(--star-color) 100%, transparent 0);
+    
+    --star-field-medium: radial-gradient(2px 2px at 12% 60%, var(--star-color) 100%, transparent 0),
+                         radial-gradient(2px 2px at 18% 10%, var(--star-color) 100%, transparent 0),
+                         radial-gradient(2px 2px at 27% 95%, var(--star-color) 100%, transparent 0),
+                         radial-gradient(2px 2px at 34% 45%, var(--star-color) 100%, transparent 0),
+                         radial-gradient(2px 2px at 43% 70%, var(--star-color) 100%, transparent 0),
+                         radial-gradient(2px 2px at 52% 5%, var(--star-color) 100%, transparent 0),
+                         radial-gradient(2px 2px at 63% 85%, var(--star-color) 100%, transparent 0),
+                         radial-gradient(2px 2px at 76% 60%, var(--star-color) 100%, transparent 0),
+                         radial-gradient(2px 2px at 87% 30%, var(--star-color) 100%, transparent 0);
+    
+    --star-field-large: radial-gradient(3px 3px at 22% 38%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(3px 3px at 48% 25%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(3px 3px at 66% 12%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(3px 3px at 79% 92%, var(--star-color) 100%, transparent 0),
+                        radial-gradient(3px 3px at 92% 58%, var(--star-color) 100%, transparent 0);
 }
 
 iframe#spotify-player {
@@ -45,11 +95,8 @@ iframe#spotify-player {
 }
 
 .animate-spotify-fade-in {
-    animation: spotify-fade-in 2s ease-out forwards;
+    animation: spotify-fade-in var(--spotify-fade-duration) ease-out forwards;
 }
-
-
-
 
 body {
     margin: 0;
@@ -58,14 +105,12 @@ body {
     overflow: hidden;
     background: var(--bg-gradient);
     background-size: 300% 300%;
-    animation: BackgroundGradient 8s ease-in-out infinite;
+    animation: backgroundGradient var(--bg-gradient-duration) ease-in-out infinite;
 }
-
 
 #logo {
-    animation: logoGlitch 5s infinite;
+    animation: logoGlitch var(--logo-glitch-duration) infinite;
 }
-
 
 @keyframes logoGlitch {
     0%, 78%, 100% {
@@ -105,9 +150,8 @@ body {
     }
 }
 
-
 /* Background gradient animation */
-@keyframes BackgroundGradient {
+@keyframes backgroundGradient {
     0% {
         background-position: 0 50%;
     }
@@ -126,47 +170,15 @@ body::after {
     content: "";
     position: absolute;
     width: 100%;
-    height: 4000px;
+    height: var(--star-field-height);
     top: 0;
     left: 0;
-    background: radial-gradient(1px 1px at 5% 5%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 10% 90%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 15% 25%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 20% 75%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 25% 40%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 30% 60%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 35% 10%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 40% 90%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 45% 20%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 50% 80%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 55% 30%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 60% 70%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 65% 50%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 70% 15%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 75% 85%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 80% 35%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 85% 65%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 90% 45%, #fff 100%, transparent 0),
-    radial-gradient(1px 1px at 95% 25%, #fff 100%, transparent 0),
-    radial-gradient(2px 2px at 12% 60%, #fff 100%, transparent 0),
-    radial-gradient(2px 2px at 18% 10%, #fff 100%, transparent 0),
-    radial-gradient(2px 2px at 27% 95%, #fff 100%, transparent 0),
-    radial-gradient(2px 2px at 34% 45%, #fff 100%, transparent 0),
-    radial-gradient(2px 2px at 43% 70%, #fff 100%, transparent 0),
-    radial-gradient(2px 2px at 52% 5%, #fff 100%, transparent 0),
-    radial-gradient(2px 2px at 63% 85%, #fff 100%, transparent 0),
-    radial-gradient(2px 2px at 76% 60%, #fff 100%, transparent 0),
-    radial-gradient(2px 2px at 87% 30%, #fff 100%, transparent 0),
-    radial-gradient(3px 3px at 22% 38%, #fff 100%, transparent 0),
-    radial-gradient(3px 3px at 48% 25%, #fff 100%, transparent 0),
-    radial-gradient(3px 3px at 66% 12%, #fff 100%, transparent 0),
-    radial-gradient(3px 3px at 79% 92%, #fff 100%, transparent 0),
-    radial-gradient(3px 3px at 92% 58%, #fff 100%, transparent 0);
-    animation: starScroll var(--star-scroll-speed) linear infinite;
+    background: var(--star-field-small), var(--star-field-medium), var(--star-field-large);
+    animation: starScroll var(--star-scroll-duration) linear infinite;
 }
 
 body::after {
-    top: 2000px;
+    top: var(--star-field-offset);
 }
 
 @keyframes starScroll {
@@ -174,7 +186,7 @@ body::after {
         transform: translateY(0);
     }
     to {
-        transform: translateY(-2000px);
+        transform: translateY(calc(-1 * var(--star-field-offset)));
     }
 }
 
@@ -240,7 +252,7 @@ body::after {
 .social a:focus,
 .social a:active,
 .glitch {
-    animation: glitch var(--glitch-speed) infinite;
+    animation: glitch var(--glitch-duration) infinite;
 }
 
 /* Accessibility: Disable animations for users who prefer reduced motion */
