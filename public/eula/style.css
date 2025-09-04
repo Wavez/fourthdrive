@@ -1,21 +1,15 @@
 :root {
     --primary-color: #4CAF50;
-    --bg-light: #fff;
-    --bg-dark: #121212;
-    --text-light: #222;
-    --text-dark: #eee;
-    --toggle-bg-light: #e9ecef;
-    --toggle-bg-dark: #2d2d2d;
-    --shadow-light: rgba(0, 0, 0, 0.1);
-    --shadow-dark: rgba(0, 0, 0, 0.3);
-    --content-bg-light: #fff;
-    --content-bg-dark: #1a1a1a;
-    --friendly-bg-light: #f5f5f5;
-    --friendly-bg-dark: #1e1e1e;
-    --closing-bg-light: #f9f9f9;
-    --closing-bg-dark: #1a1a1a;
-    --border-color-light: #4CAF50;
-    --border-color-dark: #81C784;
+    --primary-color-dark: #81C784;
+    
+    /* Light theme */
+    --bg: #fff;
+    --text: #222;
+    --toggle-bg: #e9ecef;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --content-bg: #fff;
+    --friendly-bg: #f5f5f5;
+    --border-color: var(--primary-color);
 }
 
 * {
@@ -28,35 +22,33 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     padding: 20px;
-    color: var(--text-light);
-    background-color: var(--bg-light);
+    color: var(--text);
+    background-color: var(--bg);
     transition: background-color 0.3s, color 0.3s;
     max-width: 800px;
     margin: 0 auto;
 }
 
 body.dark {
-    --text-light: var(--text-dark);
-    --bg-light: var(--bg-dark);
-    --toggle-bg-light: var(--toggle-bg-dark);
-    --shadow-light: var(--shadow-dark);
-    --content-bg-light: var(--content-bg-dark);
-    --friendly-bg-light: var(--friendly-bg-dark);
-    --closing-bg-light: var(--closing-bg-dark);
-    --border-color-light: var(--border-color-dark);
+    --bg: #121212;
+    --text: #eee;
+    --toggle-bg: #2d2d2d;
+    --shadow: rgba(0, 0, 0, 0.3);
+    --content-bg: #1a1a1a;
+    --friendly-bg: #1e1e1e;
+    --border-color: var(--primary-color-dark);
 }
 
 /* Respect system theme preference */
 @media (prefers-color-scheme: dark) {
     body:not(.light) {
-        --text-light: var(--text-dark);
-        --bg-light: var(--bg-dark);
-        --toggle-bg-light: var(--toggle-bg-dark);
-        --shadow-light: var(--shadow-dark);
-        --content-bg-light: var(--content-bg-dark);
-        --friendly-bg-light: var(--friendly-bg-dark);
-        --closing-bg-light: var(--closing-bg-dark);
-        --border-color-light: var(--border-color-dark);
+        --bg: #121212;
+        --text: #eee;
+        --toggle-bg: #2d2d2d;
+        --shadow: rgba(0, 0, 0, 0.3);
+        --content-bg: #1a1a1a;
+        --friendly-bg: #1e1e1e;
+        --border-color: var(--primary-color-dark);
     }
 }
 
@@ -111,11 +103,19 @@ li {
     direction: rtl;
 }
 
-.friendly-note {
-    background: var(--friendly-bg-light);
+.english {
+    display: block;
+}
+
+.friendly-note,
+.closing-note {
+    background: var(--friendly-bg);
     padding: 15px;
-    border-left: 4px solid var(--border-color-light);
+    border-left: 4px solid var(--border-color);
     border-radius: 4px;
+}
+
+.friendly-note {
     margin-bottom: 20px;
 }
 
@@ -123,10 +123,6 @@ li {
     margin-top: 40px;
     font-style: italic;
     text-align: center;
-    padding: 15px;
-    background: var(--friendly-bg-light);
-    border-left: 4px solid var(--border-color-light);
-    border-radius: 4px;
 }
 
 /* Toggle Container */
@@ -135,9 +131,9 @@ li {
     gap: 30px;
     margin-bottom: 30px;
     padding: 15px;
-    background: var(--friendly-bg-light);
+    background: var(--friendly-bg);
     border-radius: 10px;
-    box-shadow: 0 4px 6px var(--shadow-light);
+    box-shadow: 0 4px 6px var(--shadow);
 }
 
 .toggle-wrapper {
@@ -149,20 +145,25 @@ li {
 /* Toggle Switch Styles */
 .toggle-switch {
     display: flex;
-    background: var(--toggle-bg-light);
+    background: var(--toggle-bg);
     border-radius: 50px;
     padding: 4px;
     position: relative;
-    box-shadow: 0 2px 5px var(--shadow-light);
+    box-shadow: 0 2px 5px var(--shadow);
     cursor: pointer;
     width: 110px;
     height: 40px;
     outline: none;
-    transition: box-shadow 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.toggle-switch:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px var(--shadow);
 }
 
 .toggle-switch:focus {
-    box-shadow: 0 2px 5px var(--shadow-light), 0 0 0 3px rgba(76, 175, 80, 0.3);
+    box-shadow: 0 2px 5px var(--shadow), 0 0 0 3px rgba(76, 175, 80, 0.3);
 }
 
 .toggle-option {
@@ -235,11 +236,132 @@ body.dark .toggle-label {
     transform: scale(1.1);
 }
 
+.print-button {
+    background: var(--toggle-bg);
+    border: none;
+    border-radius: 50px;
+    width: 110px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px var(--shadow);
+    outline: none;
+}
+
+.print-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px var(--shadow);
+}
+
+.print-button:focus {
+    box-shadow: 0 2px 5px var(--shadow), 0 0 0 3px rgba(76, 175, 80, 0.3);
+}
+
+.print-button:active {
+    transform: scale(0.95);
+}
+
 .content {
     padding: 20px;
-    background: var(--content-bg-light);
+    background: var(--content-bg);
     border-radius: 8px;
-    box-shadow: 0 2px 10px var(--shadow-light);
+    box-shadow: 0 2px 10px var(--shadow);
+}
+
+/* Print Styles */
+@media print {
+    * {
+        background: transparent !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .toggle-container {
+        display: none !important;
+    }
+    
+    .friendly-note,
+    .closing-note {
+        display: none !important;
+    }
+    
+    .content {
+        background: white !important;
+        box-shadow: none !important;
+        padding: 0;
+        margin: 0;
+    }
+    
+    
+    h1, h2 {
+        page-break-after: avoid;
+        color: black !important;
+    }
+    
+    h1 {
+        font-size: 18pt;
+        margin-top: 0;
+    }
+    
+    h2 {
+        font-size: 14pt;
+        margin-top: 20pt;
+    }
+    
+    p, li {
+        orphans: 3;
+        widows: 3;
+    }
+    
+    ul, ol {
+        page-break-inside: avoid;
+    }
+    
+    .hebrew {
+        direction: rtl;
+        text-align: right;
+    }
+    
+    .hebrew h1,
+    .hebrew h2 {
+        text-align: right;
+    }
+    
+    /* Show only the active language content - default to English */
+    #english {
+        display: block !important;
+    }
+    
+    #hebrew {
+        display: none !important;
+    }
+    
+    /* When Hebrew is active, show Hebrew content */
+    body.hebrew-active #english {
+        display: none !important;
+    }
+    
+    body.hebrew-active #hebrew {
+        display: block !important;
+    }
+    
+    /* Print footer */
+    @page {
+        margin: 1in;
+        @bottom-center {
+            content: "Fourth Drive EULA - " counter(page);
+        }
+    }
 }
 
 /* Responsive Design */

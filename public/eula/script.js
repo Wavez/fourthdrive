@@ -1,107 +1,139 @@
-// Reusable toggle function with debouncing and accessibility
+// Debounce utility
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Reusable toggle function with optimized logic
 function createToggle(toggleId, stateClass, contentPairs = []) {
     const toggle = document.getElementById(toggleId);
     const toggleOptions = document.querySelectorAll(`#${toggleId} .toggle-option`);
+    const target = stateClass === 'dark' ? document.body : toggle;
     
-    // Debounce function to prevent rapid clicking
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-
-    // Toggle functionality
     const toggleFunction = debounce(function(e) {
         e.preventDefault();
         e.stopPropagation();
 
-        // Check if the toggle itself has the state class (for language) or body (for theme)
-        const isActive = stateClass === 'dark' 
-            ? document.body.classList.contains(stateClass)
-            : toggle.classList.contains(stateClass);
-
+        const isActive = target.classList.contains(stateClass);
+        const [firstOption, secondOption] = toggleOptions;
+        
         if (isActive) {
             // Switch to first option
-            if (stateClass === 'dark') {
-                document.body.classList.remove(stateClass);
-                document.body.classList.add('light');
-            } else {
-                toggle.classList.remove(stateClass);
-            }
+            target.classList.remove(stateClass);
+            if (stateClass === 'dark') target.classList.add('light');
             toggle.classList.remove(stateClass);
-            toggleOptions[0].classList.add('active');
-            toggleOptions[1].classList.remove('active');
+            firstOption.classList.add('active');
+            secondOption.classList.remove('active');
             toggle.setAttribute('aria-checked', 'false');
             
             // Toggle content pairs
-            contentPairs.forEach(pair => {
-                document.getElementById(pair[0]).style.display = 'block';
-                document.getElementById(pair[1]).style.display = 'none';
+            contentPairs.forEach(([show, hide]) => {
+                document.getElementById(show).style.display = 'block';
+                document.getElementById(hide).style.display = 'none';
             });
+            
+            // Update body class for print styles
+            if (stateClass === 'hebrew') {
+                document.body.classList.remove('hebrew-active');
+            }
         } else {
             // Switch to second option
-            if (stateClass === 'dark') {
-                document.body.classList.add(stateClass);
-                document.body.classList.remove('light');
-            } else {
-                toggle.classList.add(stateClass);
-            }
+            target.classList.add(stateClass);
+            if (stateClass === 'dark') target.classList.remove('light');
             toggle.classList.add(stateClass);
-            toggleOptions[0].classList.remove('active');
-            toggleOptions[1].classList.add('active');
+            firstOption.classList.remove('active');
+            secondOption.classList.add('active');
             toggle.setAttribute('aria-checked', 'true');
             
             // Toggle content pairs
-            contentPairs.forEach(pair => {
-                document.getElementById(pair[0]).style.display = 'none';
-                document.getElementById(pair[1]).style.display = 'block';
+            contentPairs.forEach(([hide, show]) => {
+                document.getElementById(hide).style.display = 'none';
+                document.getElementById(show).style.display = 'block';
             });
+            
+            // Update body class for print styles
+            if (stateClass === 'hebrew') {
+                document.body.classList.add('hebrew-active');
+            }
         }
     }, 150);
 
     // Event listeners
     toggle.addEventListener('click', toggleFunction);
-    
-    // Keyboard accessibility
-    toggle.addEventListener('keydown', function(e) {
+    toggle.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             toggleFunction(e);
         }
     });
+    
+    // Focus management for accessibility
+    toggle.addEventListener('focus', () => {
+        toggle.setAttribute('aria-describedby', `${toggleId}-description`);
+    });
+    
+    toggle.addEventListener('blur', () => {
+        toggle.removeAttribute('aria-describedby');
+    });
 }
 
 // Initialize toggles when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    // Check system preference and set initial theme
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeOptions = document.querySelectorAll('#theme-toggle .toggle-option');
+    // Cache elements
+    const elements = {
+        themeToggle: document.getElementById('theme-toggle'),
+        themeOptions: document.querySelectorAll('#theme-toggle .toggle-option')
+    };
     
     // Set initial theme based on system preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const [lightOption, darkOption] = elements.themeOptions;
+    
     if (prefersDark) {
         document.body.classList.add('dark');
-        themeToggle.classList.add('dark');
-        themeOptions[0].classList.remove('active');
-        themeOptions[1].classList.add('active');
-        themeToggle.setAttribute('aria-checked', 'true');
+        elements.themeToggle.classList.add('dark');
+        lightOption.classList.remove('active');
+        darkOption.classList.add('active');
+        elements.themeToggle.setAttribute('aria-checked', 'true');
     } else {
         document.body.classList.add('light');
-        themeOptions[0].classList.add('active');
-        themeOptions[1].classList.remove('active');
-        themeToggle.setAttribute('aria-checked', 'false');
+        lightOption.classList.add('active');
+        darkOption.classList.remove('active');
+        elements.themeToggle.setAttribute('aria-checked', 'false');
     }
 
+    // Initialize toggles
     createToggle('lang-toggle', 'hebrew', [
         ['english', 'hebrew'],
         ['closing-en', 'closing-he']
     ]);
-
     createToggle('theme-toggle', 'dark');
+    
+    // Focus management for print button
+    const printButton = document.querySelector('.print-button');
+    if (printButton) {
+        printButton.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                window.print();
+            }
+        });
+    }
+    
+    // Global focus management - ensure proper tab order
+    const focusableElements = document.querySelectorAll(
+        '.toggle-switch, .print-button'
+    );
+    
+    // Add tabindex management for better keyboard navigation
+    focusableElements.forEach((element, index) => {
+        element.setAttribute('tabindex', index + 1);
+    });
 });
