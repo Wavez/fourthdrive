@@ -11,128 +11,111 @@ function debounce(func, wait) {
     };
 }
 
-// Reusable toggle function with optimized logic
-function createToggle(toggleId, stateClass, contentPairs = []) {
+// Create a toggle switch with state management and content switching
+function createToggleSwitch(toggleId, stateClass, contentPairs = []) {
     const toggle = document.getElementById(toggleId);
     const toggleOptions = document.querySelectorAll(`#${toggleId} .toggle-option`);
     const target = stateClass === 'dark' ? document.body : toggle;
     
-    const toggleFunction = debounce(function(e) {
+    const handleToggle = debounce(function(e) {
         e.preventDefault();
         e.stopPropagation();
 
-        const isActive = target.classList.contains(stateClass);
-        const [firstOption, secondOption] = toggleOptions;
+        const isCurrentlyActive = target.classList.contains(stateClass);
+        const [primaryOption, secondaryOption] = toggleOptions;
         
-        if (isActive) {
-            // Switch to first option
-            target.classList.remove(stateClass);
-            if (stateClass === 'dark') target.classList.add('light');
-            toggle.classList.remove(stateClass);
-            firstOption.classList.add('active');
-            secondOption.classList.remove('active');
-            toggle.setAttribute('aria-checked', 'false');
-            
-            // Toggle content pairs
-            contentPairs.forEach(([show, hide]) => {
-                document.getElementById(show).style.display = 'block';
-                document.getElementById(hide).style.display = 'none';
-            });
-            
-            // Update body class for print styles
-            if (stateClass === 'hebrew') {
-                document.body.classList.remove('hebrew-active');
-            }
-        } else {
-            // Switch to second option
+        // Determine new state
+        const shouldActivate = !isCurrentlyActive;
+        
+        // Update target classes
+        if (shouldActivate) {
             target.classList.add(stateClass);
             if (stateClass === 'dark') target.classList.remove('light');
-            toggle.classList.add(stateClass);
-            firstOption.classList.remove('active');
-            secondOption.classList.add('active');
-            toggle.setAttribute('aria-checked', 'true');
-            
-            // Toggle content pairs
-            contentPairs.forEach(([hide, show]) => {
-                document.getElementById(hide).style.display = 'none';
-                document.getElementById(show).style.display = 'block';
-            });
-            
-            // Update body class for print styles
-            if (stateClass === 'hebrew') {
-                document.body.classList.add('hebrew-active');
+        } else {
+            target.classList.remove(stateClass);
+            if (stateClass === 'dark') target.classList.add('light');
+        }
+        
+        // Update toggle classes and aria
+        toggle.classList.toggle(stateClass, shouldActivate);
+        primaryOption.classList.toggle('active', !shouldActivate);
+        secondaryOption.classList.toggle('active', shouldActivate);
+        toggle.setAttribute('aria-checked', shouldActivate.toString());
+        
+        // Toggle content pairs
+        contentPairs.forEach(([primaryContent, secondaryContent]) => {
+            const primaryElement = document.getElementById(primaryContent);
+            const secondaryElement = document.getElementById(secondaryContent);
+            if (shouldActivate) {
+                // Switching to secondary option (Hebrew/Dark)
+                primaryElement.style.display = 'none';
+                secondaryElement.style.display = 'block';
+            } else {
+                // Switching to primary option (English/Light)
+                primaryElement.style.display = 'block';
+                secondaryElement.style.display = 'none';
             }
+        });
+        
+        // Update body class for print styles
+        if (stateClass === 'hebrew') {
+            document.body.classList.toggle('hebrew-active', shouldActivate);
         }
     }, 150);
 
     // Event listeners
-    toggle.addEventListener('click', toggleFunction);
+    toggle.addEventListener('click', handleToggle);
     toggle.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
+        if (['Enter', ' '].includes(e.key)) {
             e.preventDefault();
-            toggleFunction(e);
+            handleToggle(e);
         }
     });
     
     // Focus management for accessibility
-    toggle.addEventListener('focus', () => {
-        toggle.setAttribute('aria-describedby', `${toggleId}-description`);
-    });
-    
-    toggle.addEventListener('blur', () => {
-        toggle.removeAttribute('aria-describedby');
-    });
+    toggle.addEventListener('focus', () => toggle.setAttribute('aria-describedby', `${toggleId}-description`));
+    toggle.addEventListener('blur', () => toggle.removeAttribute('aria-describedby'));
 }
 
 // Initialize toggles when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    // Cache elements
-    const elements = {
-        themeToggle: document.getElementById('theme-toggle'),
-        themeOptions: document.querySelectorAll('#theme-toggle .toggle-option')
+    // Cache theme elements
+    const themeElements = {
+        toggle: document.getElementById('theme-toggle'),
+        options: document.querySelectorAll('#theme-toggle .toggle-option')
     };
     
     // Set initial theme based on system preference
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const [lightOption, darkOption] = elements.themeOptions;
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const [lightModeOption, darkModeOption] = themeElements.options;
     
-    if (prefersDark) {
-        document.body.classList.add('dark');
-        elements.themeToggle.classList.add('dark');
-        lightOption.classList.remove('active');
-        darkOption.classList.add('active');
-        elements.themeToggle.setAttribute('aria-checked', 'true');
-    } else {
-        document.body.classList.add('light');
-        lightOption.classList.add('active');
-        darkOption.classList.remove('active');
-        elements.themeToggle.setAttribute('aria-checked', 'false');
-    }
+    // Apply initial theme state
+    document.body.classList.add(systemPrefersDark ? 'dark' : 'light');
+    themeElements.toggle.classList.toggle('dark', systemPrefersDark);
+    lightModeOption.classList.toggle('active', !systemPrefersDark);
+    darkModeOption.classList.toggle('active', systemPrefersDark);
+    themeElements.toggle.setAttribute('aria-checked', systemPrefersDark.toString());
 
-    // Initialize toggles
-    createToggle('lang-toggle', 'hebrew', [
-        ['english', 'hebrew'],
+    // Initialize toggle switches
+    createToggleSwitch('language-toggle', 'hebrew', [
+        ['english-content', 'hebrew-content'],
         ['closing-en', 'closing-he']
     ]);
-    createToggle('theme-toggle', 'dark');
+    createToggleSwitch('theme-toggle', 'dark');
     
-    // Focus management for print button
+    // Print button and focus management
     const printButton = document.querySelector('.print-button');
-    if (printButton) {
-        printButton.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                window.print();
-            }
-        });
-    }
+    const focusableElements = document.querySelectorAll('.toggle-switch, .print-button');
     
-    // Global focus management - ensure proper tab order
-    const focusableElements = document.querySelectorAll(
-        '.toggle-switch, .print-button'
-    );
+    // Print button keyboard support
+    printButton?.addEventListener('keydown', (e) => {
+        if (['Enter', ' '].includes(e.key)) {
+            e.preventDefault();
+            window.print();
+        }
+    });
     
-    // Add tabindex management for better keyboard navigation
+    // Set proper tab order
     focusableElements.forEach((element, index) => {
         element.setAttribute('tabindex', index + 1);
     });

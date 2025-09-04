@@ -29,6 +29,7 @@ body {
     margin: 0 auto;
 }
 
+/* Dark theme variables */
 body.dark {
     --bg: #121212;
     --text: #eee;
@@ -338,20 +339,20 @@ body.dark .toggle-label {
     }
     
     /* Show only the active language content - default to English */
-    #english {
+    #english-content {
         display: block !important;
     }
     
-    #hebrew {
+    #hebrew-content {
         display: none !important;
     }
     
     /* When Hebrew is active, show Hebrew content */
-    body.hebrew-active #english {
+    body.hebrew-active #english-content {
         display: none !important;
     }
     
-    body.hebrew-active #hebrew {
+    body.hebrew-active #hebrew-content {
         display: block !important;
     }
     
