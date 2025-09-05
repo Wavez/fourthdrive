@@ -315,7 +315,7 @@ body.dark .toggle-label {
     .content {
         background: white !important;
         box-shadow: none !important;
-        padding: 0;
+        padding: 0 0 20pt 0;
         margin: 0;
     }
     
@@ -324,6 +324,7 @@ body.dark .toggle-label {
         page-break-after: avoid;
         color: black !important;
     }
+    
     
     h1 {
         font-size: 18pt;
@@ -389,7 +390,7 @@ body.dark .toggle-label {
     
     /* Print page settings */
     @page {
-        margin: 0.5in;
+        margin: 0.4in;
         size: A4;
         @bottom-center {
             content: "Fourth Drive EULA - " counter(page);
