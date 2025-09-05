@@ -21,6 +21,13 @@ function updateContentVisibility(contentPairs, shouldActivate) {
     });
 }
 
+function handleKeyboardActivation(e, callback) {
+    if (KEYBOARD_ACTIVATION_KEYS.includes(e.key)) {
+        e.preventDefault();
+        callback(e);
+    }
+}
+
 // Create a toggle switch with state management and content switching
 function createToggleSwitch(toggleId, stateClass, contentPairs = []) {
     const toggle = document.getElementById(toggleId);
@@ -63,12 +70,7 @@ function createToggleSwitch(toggleId, stateClass, contentPairs = []) {
 
     // Event listeners
     toggle.addEventListener('click', handleToggle);
-    toggle.addEventListener('keydown', (e) => {
-        if (KEYBOARD_ACTIVATION_KEYS.includes(e.key)) {
-            e.preventDefault();
-            handleToggle(e);
-        }
-    });
+    toggle.addEventListener('keydown', (e) => handleKeyboardActivation(e, handleToggle));
     
     // Focus management for accessibility
     toggle.addEventListener('focus', () => toggle.setAttribute('aria-describedby', `${toggleId}-description`));
@@ -77,22 +79,17 @@ function createToggleSwitch(toggleId, stateClass, contentPairs = []) {
 
 // Initialize toggles when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    // Cache theme elements
-    const themeElements = {
-        toggle: document.getElementById('theme-toggle'),
-        options: document.querySelectorAll('#theme-toggle .toggle-option')
-    };
-    
-    // Set initial theme based on system preference
+    // Initialize theme based on system preference
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const [lightModeOption, darkModeOption] = themeElements.options;
+    const themeToggle = document.getElementById('theme-toggle');
+    const [lightModeOption, darkModeOption] = document.querySelectorAll('#theme-toggle .toggle-option');
     
     // Apply initial theme state
     document.body.classList.add(systemPrefersDark ? 'dark' : 'light');
-    themeElements.toggle.classList.toggle('dark', systemPrefersDark);
+    themeToggle.classList.toggle('dark', systemPrefersDark);
     lightModeOption.classList.toggle('active', !systemPrefersDark);
     darkModeOption.classList.toggle('active', systemPrefersDark);
-    themeElements.toggle.setAttribute('aria-checked', systemPrefersDark.toString());
+    themeToggle.setAttribute('aria-checked', systemPrefersDark.toString());
 
     // Initialize toggle switches
     createToggleSwitch('language-toggle', 'hebrew', [
@@ -101,17 +98,22 @@ document.addEventListener('DOMContentLoaded', function() {
     ]);
     createToggleSwitch('theme-toggle', 'dark');
     
+    // Toggle panel functionality
+    const togglePanelBtn = document.getElementById('toggle-panel-btn');
+    const toggleContainer = document.querySelector('.toggle-container');
+    
+    togglePanelBtn?.addEventListener('click', () => {
+        toggleContainer.classList.toggle('collapsed');
+        const isCollapsed = toggleContainer.classList.contains('collapsed');
+        togglePanelBtn.setAttribute('aria-label', isCollapsed ? 'Show control panel' : 'Hide control panel');
+    });
+    
     // Print button and focus management
     const printButton = document.querySelector('.print-button');
-    const focusableElements = document.querySelectorAll('.toggle-switch, .print-button');
+    const focusableElements = document.querySelectorAll('.toggle-switch, .print-button, .toggle-panel-btn');
     
     // Print button keyboard support
-    printButton?.addEventListener('keydown', (e) => {
-        if (KEYBOARD_ACTIVATION_KEYS.includes(e.key)) {
-            e.preventDefault();
-            window.print();
-        }
-    });
+    printButton?.addEventListener('keydown', (e) => handleKeyboardActivation(e, () => window.print()));
     
     // Set proper tab order
     focusableElements.forEach((element, index) => {
