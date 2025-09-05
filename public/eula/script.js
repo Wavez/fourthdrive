@@ -1,5 +1,4 @@
 // Constants
-const DEBOUNCE_DELAY = 150;
 const KEYBOARD_ACTIVATION_KEYS = ['Enter', ' '];
 
 // Helper functions
@@ -22,19 +21,6 @@ function updateContentVisibility(contentPairs, shouldActivate) {
     });
 }
 
-// Debounce utility
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
 // Create a toggle switch with state management and content switching
 function createToggleSwitch(toggleId, stateClass, contentPairs = []) {
     const toggle = document.getElementById(toggleId);
@@ -46,7 +32,7 @@ function createToggleSwitch(toggleId, stateClass, contentPairs = []) {
     const toggleOptions = document.querySelectorAll(`#${toggleId} .toggle-option`);
     const target = stateClass === 'dark' ? document.body : toggle;
     
-    const handleToggle = debounce(function(e) {
+    const handleToggle = function(e) {
         e.preventDefault();
         e.stopPropagation();
 
@@ -73,7 +59,7 @@ function createToggleSwitch(toggleId, stateClass, contentPairs = []) {
         if (stateClass === 'hebrew') {
             document.body.classList.toggle('hebrew-active', shouldActivate);
         }
-    }, DEBOUNCE_DELAY);
+    };
 
     // Event listeners
     toggle.addEventListener('click', handleToggle);
