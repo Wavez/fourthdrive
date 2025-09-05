@@ -392,7 +392,7 @@ body.dark .toggle-label {
     }
 }
 
-/* Extra large mobile devices */
+/* Extra small mobile devices */
 @media (max-width: 480px) {
     .print-button {
         width: 70px;
@@ -402,6 +402,7 @@ body.dark .toggle-label {
     .toggle-switch {
         width: 90px;
         height: 32px;
+        padding: 3px;
     }
     
     .toggle-option {
@@ -410,16 +411,16 @@ body.dark .toggle-label {
     }
     
     .toggle-slider {
-        width: 46px;
-        height: 28px;
+        width: 42px;
+        height: 26px;
     }
     
     .lang-toggle.hebrew .toggle-slider {
-        transform: translateX(48px);
+        transform: translateX(45px);
     }
     
     .theme-toggle.dark .toggle-slider {
-        transform: translateX(48px);
+        transform: translateX(45px);
     }
     
     h1 {
