@@ -338,7 +338,6 @@ body.dark .toggle-label {
     p, li {
         orphans: 3;
         widows: 3;
-        page-break-inside: avoid;
     }
     
     ul, ol {
@@ -358,6 +357,7 @@ body.dark .toggle-label {
         overflow-wrap: break-word;
         hyphens: auto;
     }
+    
     
     #hebrew-content {
         direction: rtl;
@@ -399,7 +399,7 @@ body.dark .toggle-label {
     /* Mobile print adjustments */
     @media print and (max-width: 768px) {
         @page {
-            margin: 0.25in;
+            margin: 0.15in;
         }
         
         body {
@@ -418,7 +418,6 @@ body.dark .toggle-label {
         p, li {
             orphans: 2;
             widows: 2;
-            page-break-inside: avoid;
         }
     }
 }
