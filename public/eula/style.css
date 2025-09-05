@@ -120,9 +120,6 @@ li {
     display: block;
 }
 
-.hebrew-content {
-    direction: rtl;
-}
 
 .friendly-note,
 .closing-note {
@@ -368,11 +365,6 @@ body.dark .toggle-label {
         padding: 15px;
     }
     
-    .toggle-container {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
     
     .toggle-group {
         display: flex;
