@@ -363,7 +363,7 @@ body.dark .toggle-label {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
     body {
         padding: 15px;
     }
@@ -416,11 +416,11 @@ body.dark .toggle-label {
     }
     
     .lang-toggle.hebrew .toggle-slider {
-        transform: translateX(45px);
+        transform: translateX(48px);
     }
     
     .theme-toggle.dark .toggle-slider {
-        transform: translateX(45px);
+        transform: translateX(48px);
     }
     
     h1 {
@@ -430,9 +430,7 @@ body.dark .toggle-label {
     h2 {
         font-size: 1.2em;
     }
-}
-
-@media (max-width: 480px) {
+    
     body {
         padding: 10px;
     }
