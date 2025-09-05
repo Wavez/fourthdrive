@@ -338,10 +338,25 @@ body.dark .toggle-label {
     p, li {
         orphans: 3;
         widows: 3;
+        page-break-inside: avoid;
     }
     
     ul, ol {
         page-break-inside: avoid;
+    }
+    
+    /* Prevent content from being cut off */
+    .content {
+        overflow: visible !important;
+        max-width: none !important;
+        width: 100% !important;
+    }
+    
+    /* Ensure text doesn't get truncated */
+    p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
     }
     
     #hebrew-content {
@@ -372,11 +387,38 @@ body.dark .toggle-label {
         display: block !important;
     }
     
-    /* Print footer */
+    /* Print page settings */
     @page {
-        margin: 1in;
+        margin: 0.5in;
+        size: A4;
         @bottom-center {
             content: "Fourth Drive EULA - " counter(page);
+        }
+    }
+    
+    /* Mobile print adjustments */
+    @media print and (max-width: 768px) {
+        @page {
+            margin: 0.25in;
+        }
+        
+        body {
+            font-size: 10pt;
+            line-height: 1.3;
+        }
+        
+        h1 {
+            font-size: 16pt;
+        }
+        
+        h2 {
+            font-size: 12pt;
+        }
+        
+        p, li {
+            orphans: 2;
+            widows: 2;
+            page-break-inside: avoid;
         }
     }
 }
