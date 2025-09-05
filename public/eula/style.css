@@ -363,7 +363,7 @@ body.dark .toggle-label {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     body {
         padding: 15px;
     }
@@ -389,17 +389,24 @@ body.dark .toggle-label {
     .print-button {
         width: 80px;
         height: 36px;
-        font-size: 20px;
+    }
+}
+
+/* Extra large mobile devices */
+@media (max-width: 480px) {
+    .print-button {
+        width: 70px;
+        height: 32px;
     }
     
     .toggle-switch {
-        width: 100px;
-        height: 36px;
+        width: 90px;
+        height: 32px;
     }
     
     .toggle-option {
-        width: 46px;
-        height: 28px;
+        width: 42px;
+        height: 26px;
     }
     
     .toggle-slider {
