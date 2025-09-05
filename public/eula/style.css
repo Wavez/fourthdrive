@@ -362,8 +362,8 @@ body.dark .toggle-label {
     }
 }
 
-/* Responsive Design */
-@media (max-width: 900px) {
+/* Mobile Layout */
+@media (max-width: 768px) {
     body {
         padding: 15px;
     }
@@ -389,57 +389,5 @@ body.dark .toggle-label {
     .print-button {
         width: 80px;
         height: 36px;
-    }
-}
-
-/* Extra small mobile devices */
-@media (max-width: 480px) {
-    .print-button {
-        width: 70px;
-        height: 32px;
-    }
-    
-    .toggle-switch {
-        width: 90px;
-        height: 32px;
-        padding: 3px;
-    }
-    
-    .toggle-option {
-        width: 42px;
-        height: 26px;
-    }
-    
-    .toggle-slider {
-        width: 42px;
-        height: 26px;
-    }
-    
-    .lang-toggle.hebrew .toggle-slider {
-        transform: translateX(48px);
-    }
-    
-    .theme-toggle.dark .toggle-slider {
-        transform: translateX(48px);
-    }
-    
-    h1 {
-        font-size: 1.5em;
-    }
-    
-    h2 {
-        font-size: 1.2em;
-    }
-    
-    body {
-        padding: 10px;
-    }
-    
-    .toggle-container {
-        padding: 10px;
-    }
-    
-    .content {
-        padding: 15px;
     }
 }
