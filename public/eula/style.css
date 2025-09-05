@@ -386,6 +386,12 @@ body.dark .toggle-label {
         align-items: center;
     }
     
+    .print-button {
+        width: 80px;
+        height: 36px;
+        font-size: 20px;
+    }
+    
     .toggle-switch {
         width: 100px;
         height: 36px;
