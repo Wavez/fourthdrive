@@ -146,11 +146,25 @@ li {
 .toggle-container {
     display: flex;
     gap: 30px;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 30px;
     padding: 15px;
     background: var(--friendly-bg);
     border-radius: 10px;
     box-shadow: 0 4px 6px var(--shadow);
+}
+
+.toggle-group {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
 }
 
 .toggle-wrapper {
@@ -296,11 +310,16 @@ body.dark .toggle-label {
     }
     
     body {
-        font-size: 12pt;
-        line-height: 1.4;
-        max-width: none;
-        margin: 0;
-        padding: 0;
+        background: white !important;
+        color: black !important;
+    }
+    
+    .content {
+        background: white !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
     
     .toggle-container {
@@ -312,74 +331,11 @@ body.dark .toggle-label {
         display: none !important;
     }
     
-    .content {
-        background: white !important;
-        box-shadow: none !important;
-        padding: 0 0 20pt 0;
-        margin: 0;
-    }
-    
-    
-    h1, h2 {
-        page-break-after: avoid;
-        color: black !important;
-    }
-    
-    
-    h1 {
-        font-size: 18pt;
-        margin-top: 0;
-    }
-    
-    h2 {
-        font-size: 14pt;
-        margin-top: 20pt;
-    }
-    
-    p, li {
-        orphans: 3;
-        widows: 3;
-    }
-    
-    ul, ol {
-        page-break-inside: avoid;
-    }
-    
-    /* Prevent content from being cut off */
-    .content {
-        overflow: visible !important;
-        max-width: none !important;
-        width: 100% !important;
-    }
-    
-    /* Ensure text doesn't get truncated */
-    p {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-    }
-    
-    
-    #hebrew-content {
-        direction: rtl;
-        text-align: right;
-    }
-    
-    #hebrew-content h1,
-    #hebrew-content h2 {
-        text-align: right;
-    }
-    
-    /* Show only the active language content - default to English */
-    #english-content {
-        display: block !important;
-    }
-    
-    #hebrew-content {
+    /* Language-specific visibility */
+    body:not(.hebrew-active) #hebrew-content {
         display: none !important;
     }
     
-    /* When Hebrew is active, show Hebrew content */
     body.hebrew-active #english-content {
         display: none !important;
     }
@@ -388,38 +344,21 @@ body.dark .toggle-label {
         display: block !important;
     }
     
-    /* Print page settings */
-    @page {
-        margin: 0.4in;
-        size: A4;
-        @bottom-center {
-            content: "Fourth Drive EULA - " counter(page);
-        }
+    /* Better page breaks */
+    h1, h2 {
+        page-break-after: avoid;
+        page-break-inside: avoid;
     }
     
-    /* Mobile print adjustments */
-    @media print and (max-width: 768px) {
-        @page {
-            margin: 0.15in;
-        }
-        
-        body {
-            font-size: 10pt;
-            line-height: 1.3;
-        }
-        
-        h1 {
-            font-size: 16pt;
-        }
-        
-        h2 {
-            font-size: 12pt;
-        }
-        
-        p, li {
-            orphans: 2;
-            widows: 2;
-        }
+    p {
+        page-break-inside: avoid;
+        orphans: 3;
+        widows: 3;
+    }
+    
+    /* Keep headings with their content */
+    h2 + p {
+        page-break-before: avoid;
     }
 }
 
@@ -430,8 +369,21 @@ body.dark .toggle-label {
     }
     
     .toggle-container {
-        flex-direction: column;
-        gap: 20px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .toggle-group {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .button-group {
+        display: flex;
+        gap: 15px;
+        align-items: center;
     }
     
     .toggle-switch {

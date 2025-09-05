@@ -12,45 +12,49 @@
 
 <!-- Control Panel -->
 <nav class="toggle-container" aria-label="EULA controls">
-    <div class="toggle-wrapper">
-        <div class="toggle-label">Language</div>
-        <div class="toggle-switch lang-toggle" id="language-toggle"
-             role="switch"
-             aria-label="Language selector"
-             aria-checked="false"
-             tabindex="0">
-            <div class="toggle-slider"></div>
-            <div class="toggle-option active" data-lang="en">
-                <span class="flag" aria-label="English">🇺🇸</span>
+    <div class="toggle-group">
+        <div class="toggle-wrapper">
+            <div class="toggle-label">Language</div>
+            <div class="toggle-switch lang-toggle" id="language-toggle"
+                 role="switch"
+                 aria-label="Language selector"
+                 aria-checked="false"
+                 tabindex="0">
+                <div class="toggle-slider"></div>
+                <div class="toggle-option active" data-lang="en">
+                    <span class="flag" aria-label="English">🇺🇸</span>
+                </div>
+                <div class="toggle-option" data-lang="he">
+                    <span class="flag" aria-label="Hebrew">🇮🇱</span>
+                </div>
             </div>
-            <div class="toggle-option" data-lang="he">
-                <span class="flag" aria-label="Hebrew">🇮🇱</span>
+        </div>
+
+        <div class="toggle-wrapper">
+            <div class="toggle-label">Theme</div>
+            <div class="toggle-switch theme-toggle" id="theme-toggle"
+                 role="switch"
+                 aria-label="Theme selector"
+                 aria-checked="false"
+                 tabindex="0">
+                <div class="toggle-slider"></div>
+                <div class="toggle-option active" data-theme="light">
+                    <span class="theme-icon" aria-label="Light theme">☀️</span>
+                </div>
+                <div class="toggle-option" data-theme="dark">
+                    <span class="theme-icon" aria-label="Dark theme">🌑</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="toggle-wrapper">
-        <div class="toggle-label">Theme</div>
-        <div class="toggle-switch theme-toggle" id="theme-toggle"
-             role="switch"
-             aria-label="Theme selector"
-             aria-checked="false"
-             tabindex="0">
-            <div class="toggle-slider"></div>
-            <div class="toggle-option active" data-theme="light">
-                <span class="theme-icon" aria-label="Light theme">☀️</span>
-            </div>
-            <div class="toggle-option" data-theme="dark">
-                <span class="theme-icon" aria-label="Dark theme">🌙</span>
-            </div>
+    <div class="button-group">
+        <div class="toggle-wrapper">
+            <div class="toggle-label">Print</div>
+            <button class="print-button" onclick="window.print()" aria-label="Print EULA">
+                🖨️
+            </button>
         </div>
-    </div>
-
-    <div class="toggle-wrapper">
-        <div class="toggle-label">Print</div>
-        <button class="print-button" onclick="window.print()" aria-label="Print EULA">
-            🖨️
-        </button>
     </div>
 </nav>
 
