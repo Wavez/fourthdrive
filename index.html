@@ -73,7 +73,12 @@
             </svg>
         </a>
     </div>
-    <iframe id="spotify-player" src="https://open.spotify.com/embed/album/3oYY2FwqAXNHlvlXgVbEjh" width="400" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <div id="spotify-container">
+        <div id="spotify-spinner" class="spinner">
+            <div class="spinner-ring"></div>
+        </div>
+        <iframe id="spotify-player" src="https://open.spotify.com/embed/album/3oYY2FwqAXNHlvlXgVbEjh" width="400" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
 </div>
 <script type="module" src="src/index.js"></script>
 </body>

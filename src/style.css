@@ -65,10 +65,41 @@
                         radial-gradient(3px 3px at 92% 58%, var(--star-color) 100%, transparent 0);
 }
 
+#spotify-container {
+    position: relative;
+    margin-top: 1rem;
+}
+
 iframe#spotify-player {
     border: none;
     opacity: 0;
-    margin-top: 1rem;
+}
+
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.spinner-ring {
+    width: 40px;
+    height: 40px;
+    border: 3px solid transparent;
+    border-top-color: var(--glitch-cyan);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner.hidden {
+    display: none;
 }
 
 @keyframes spotify-fade-in {
@@ -228,7 +259,6 @@ body::after {
 /* Social links */
 .social {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: flex-start;
     padding: 1rem;
@@ -248,9 +278,6 @@ body::after {
     vertical-align: middle;
 }
 
-.social a:hover,
-.social a:focus,
-.social a:active,
 .glitch {
     animation: glitch var(--glitch-duration) infinite;
 }
