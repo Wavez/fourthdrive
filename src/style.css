@@ -129,10 +129,6 @@ iframe#spotify-player {
     animation: spotify-fade-in var(--spotify-fade-duration) ease-out forwards;
 }
 
-html {
-    overflow: hidden;
-}
-
 body {
     margin: 0;
     padding: 0;
@@ -231,7 +227,8 @@ body::after {
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    min-height: 100dvh;
+    height: 100dvh;
+    max-height: 100dvh;
 }
 
 .container > * {
