@@ -129,6 +129,12 @@ iframe#spotify-player {
     animation: spotify-fade-in var(--spotify-fade-duration) ease-out forwards;
 }
 
+html {
+    overflow: hidden;
+    overscroll-behavior: none;
+    height: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -138,12 +144,8 @@ body {
     background-size: 300% 300%;
     animation: backgroundGradient var(--bg-gradient-duration) ease-in-out infinite;
     overscroll-behavior: none;
-    touch-action: pan-x pan-y;
-}
-
-html {
-    overflow: hidden;
-    overscroll-behavior: none;
+    touch-action: none;
+    height: 100%;
 }
 
 #logo {
@@ -234,7 +236,7 @@ body::after {
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    min-height: 100dvh;
+    height: 100dvh;
 }
 
 .container > * {
