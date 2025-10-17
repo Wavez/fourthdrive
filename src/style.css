@@ -137,9 +137,13 @@ body {
     background: var(--bg-gradient);
     background-size: 300% 300%;
     animation: backgroundGradient var(--bg-gradient-duration) ease-in-out infinite;
-    height: 100dvh;
-    position: fixed;
-    width: 100%;
+    overscroll-behavior: none;
+    touch-action: pan-x pan-y;
+}
+
+html {
+    overflow: hidden;
+    overscroll-behavior: none;
 }
 
 #logo {
