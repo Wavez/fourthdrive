@@ -131,8 +131,6 @@ iframe#spotify-player {
 
 html {
     overflow: hidden;
-    overscroll-behavior: none;
-    height: 100%;
 }
 
 body {
@@ -143,9 +141,6 @@ body {
     background: var(--bg-gradient);
     background-size: 300% 300%;
     animation: backgroundGradient var(--bg-gradient-duration) ease-in-out infinite;
-    overscroll-behavior: none;
-    touch-action: none;
-    height: 100%;
 }
 
 #logo {
@@ -236,7 +231,7 @@ body::after {
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    height: 100dvh;
+    min-height: 100dvh;
 }
 
 .container > * {
