@@ -1,6 +1,6 @@
 #  [fourthdrive.com](https://fourthdrive.com)
-Synths, techno, modular gear—my obsession since the early 2010s.  
-This site is where my music lives — and, mostly, where I play around with minimal quirky SVG animations 😂.
+Synths, techno, modular gear - my obsession since the early 2010s.  
+This site is where my music lives - and, mostly, where I play around with minimal quirky SVG animations 😂.
 
 ```bash
 ______               _   _      ______      _           
