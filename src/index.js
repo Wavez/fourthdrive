@@ -70,3 +70,10 @@ if (elements.socialContainer && !state.prefersReducedMotion) {
     startGlitchSequence();
 }
 
+// Prevent mobile scrolling
+document.addEventListener('touchmove', (e) => {
+    if (!e.target.closest('#spotify-container')) {
+        e.preventDefault();
+    }
+}, { passive: false });
+

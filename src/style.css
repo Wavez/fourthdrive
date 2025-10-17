@@ -227,8 +227,7 @@ body::after {
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    height: 100dvh;
-    max-height: 100dvh;
+    min-height: 100dvh;
 }
 
 .container > * {
