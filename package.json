@@ -6,7 +6,7 @@
   },
   "description": "Fourth Drive - music producer's website with glitch animations and Spotify integration",
   "devDependencies": {
-    "vite": "^7.1.5"
+    "vite": "^7.1.11"
   },
   "scripts": {
     "dev": "vite",
