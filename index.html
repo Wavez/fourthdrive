@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Fourth Drive</title>
+    <title>Fourth Drive — Techno Producer &amp; Modular Synths</title>
     <meta name="description" content="Fourth Drive is the moniker of the music producer Gal - Synths, techno, modular gear"/>
     <meta name="author" content="Fourth Drive"/>
     <meta name="theme-color" content="#000000"/>
     <meta name="robots" content="index, follow"/>
-    <meta name="keywords" content="music, producer, techno, synths, modular, fourth drive, gal"/>
+    <link rel="canonical" href="https://fourthdrive.com/"/>
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
     
@@ -25,6 +25,24 @@
     <meta property="twitter:title" content="Fourth Drive"/>
     <meta property="twitter:description" content="Fourth Drive is the moniker of the music producer Gal - Synths, techno, modular gear"/>
     <meta property="twitter:image" content="https://fourthdrive.com/logo.svg"/>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "MusicGroup",
+            "name": "Fourth Drive",
+            "alternateName": "Gal",
+            "description": "Techno producer working with synths, modular gear, and electronic sound.",
+            "url": "https://fourthdrive.com/",
+            "image": "https://fourthdrive.com/logo.svg",
+            "genre": ["Techno", "Electronic music"],
+            "sameAs": [
+                "https://www.instagram.com/fourthdrive",
+                "https://fourthdrive.gumroad.com",
+                "https://ffm.bio/fourthdrive"
+            ]
+        }
+    </script>
 
     <link rel="icon" href="/fav-icon/favicon.ico" sizes="32x32">
     <link rel="icon" href="/fav-icon/icon.svg" type="image/svg+xml">
@@ -48,38 +66,89 @@
     </script>
 
 </head>
-<body>
+<body class="terminal-shell">
+<span class="deco-corner deco-corner--tl" aria-hidden="true"></span>
+<span class="deco-corner deco-corner--tr" aria-hidden="true"></span>
+<span class="deco-corner deco-corner--bl" aria-hidden="true"></span>
+<span class="deco-corner deco-corner--br" aria-hidden="true"></span>
+<header class="site-status" aria-hidden="true">
+    <span class="status-glyph" aria-label="Lunar coordinate"><span class="status-glyph__text" aria-hidden="true">⟟ 04</span></span>
+    <span class="status-glyph status-glyph--center" aria-label="Fourth Drive Transmission"><span class="terminal-readout" aria-hidden="true"><span class="terminal-readout__text"></span><span class="terminal-readout__cursor">▌</span></span></span>
+    <span class="signal-status" aria-label="Lunar phase: waxing crescent"><i class="lunar-phase" aria-hidden="true">◐</i></span>
+</header>
+<main class="terminal-frame">
+<div class="spacetime-grid" aria-hidden="true"></div>
+<div class="gravity-well" aria-hidden="true">
+    <span class="gravity-well__spokes"></span>
+    <span class="gravity-well__ring"></span>
+    <span class="gravity-well__ring"></span>
+    <span class="gravity-well__ring"></span>
+    <span class="gravity-well__ring"></span>
+    <span class="gravity-well__ring"></span>
+    <span class="gravity-well__ring"></span>
+</div>
 <div class="container">
-    <div id="logo" title="Fourth Drive logo">
-        <img src="/logo.svg" alt="Fourth Drive logo" decoding="async" fetchpriority="high"/>
+    <div class="logo-orbit">
+        <span class="frame-runner" aria-hidden="true"></span>
+        <span class="frame-runner frame-runner--reverse" aria-hidden="true"></span>
+        <div id="logo" title="Fourth Drive logo">
+            <div class="logo-frame">
+                <img src="/logo.svg" alt="Fourth Drive logo" decoding="async" fetchpriority="high"/>
+            </div>
+        </div>
     </div>
-    <div class="social">
+    <div class="social-panel">
+        <svg class="panel-ornament" viewBox="0 0 48 20" width="48" height="20" aria-hidden="true">
+            <rect x="8" y="4" width="32" height="12"/>
+            <path class="panel-ornament__tick" d="M2 10 L15 10 M33 10 L46 10"/>
+            <path class="panel-ornament__gem-outer" d="M24 3 L30 10 L24 17 L18 10 Z"/>
+            <path class="panel-ornament__gem-inner" d="M24 7 L27 10 L24 13 L21 10 Z"/>
+        </svg>
+        <div class="social">
         <a href="https://ffm.bio/fourthdrive" target="_blank" rel="noopener noreferrer" title="feature.fm"
-           aria-label="feature.fm">
+           aria-label="feature.fm" data-label="MORE">
             <svg width="256" height="256" viewBox="0 0 256 256" aria-hidden="true" focusable="false">
                 <use href="/icons.svg#play"/>
             </svg>
         </a>
         <a href="https://www.instagram.com/fourthdrive" target="_blank" rel="noopener noreferrer" title="Instagram"
-           aria-label="Instagram">
+           aria-label="Instagram" data-label="INSTAGRAM">
             <svg width="256" height="256" viewBox="0 0 256 256" aria-hidden="true" focusable="false">
                 <use href="/icons.svg#instagram"/>
             </svg>
         </a>
         <a href="https://fourthdrive.gumroad.com" target="_blank" rel="noopener noreferrer" title="gumroad"
-           aria-label="gumroad">
+           aria-label="gumroad" data-label="GUMROAD">
             <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <use href="/icons.svg#gumroad"/>
             </svg>
         </a>
-    </div>
-    <div id="spotify-container">
-        <div id="spotify-spinner" class="spinner">
-            <div class="spinner-ring"></div>
         </div>
-        <iframe id="spotify-player" src="https://open.spotify.com/embed/album/3oYY2FwqAXNHlvlXgVbEjh" width="400" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
+    <section id="spotify-container" aria-label="Audio transmission">
+        <svg class="panel-ornament" viewBox="0 0 48 20" width="48" height="20" aria-hidden="true">
+            <rect x="8" y="4" width="32" height="12"/>
+            <path class="panel-ornament__tick" d="M2 10 L15 10 M33 10 L46 10"/>
+            <path class="panel-ornament__gem-outer" d="M24 3 L30 10 L24 17 L18 10 Z"/>
+            <path class="panel-ornament__gem-inner" d="M24 7 L27 10 L24 13 L21 10 Z"/>
+        </svg>
+        <div class="player-header">
+            <span>&gt; AUDIO TRANSMISSION</span>
+        </div>
+        <div class="player-viewport">
+            <div id="spotify-spinner" class="spinner">
+                <div class="spinner-ring"></div>
+            </div>
+            <div class="player-scanline" aria-hidden="true"></div>
+            <div id="spotify-player"
+                 data-spotify-url="https://open.spotify.com/album/3oYY2FwqAXNHlvlXgVbEjh?theme=dark"
+                 aria-label="Spotify player"></div>
+            <div class="spotify-tint" aria-hidden="true"></div>
+        </div>
+    </section>
 </div>
+</main>
+<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
 <script type="module" src="src/index.js"></script>
 </body>
 </html>
