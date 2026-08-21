@@ -2,11 +2,11 @@
   "name": "fourthdrive",
   "version": "2.0.0",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12"
   },
   "description": "Fourth Drive - music producer's website with glitch animations and Spotify integration",
   "devDependencies": {
-    "vite": "^7.1.5"
+    "vite": "^8.2.2"
   },
   "scripts": {
     "dev": "vite",
