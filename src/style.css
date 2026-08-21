@@ -162,8 +162,8 @@ body {
     min-height: 100dvh;
     background:
         linear-gradient(90deg, transparent 0 8%, rgba(255, 255, 255, 0.025) 8.05% 8.1%, transparent 8.15% 91.85%, rgba(255, 255, 255, 0.025) 91.9% 91.95%, transparent 92%),
-        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.016) 0 1px, transparent 1px 5px),
-        radial-gradient(circle at 50% 42%, rgba(93, 117, 67, 0.12), transparent 40%),
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.01) 0 1px, transparent 1px 5px),
+        radial-gradient(circle at 50% 42%, rgba(93, 117, 67, 0.09), transparent 40%),
         var(--bunker-black);
 }
 
@@ -241,7 +241,7 @@ body {
     z-index: 0;
     inset: 0;
     pointer-events: none;
-    opacity: 0.1;
+    opacity: 0.07;
     background-image:
         linear-gradient(rgba(181, 202, 130, 0.22) 1px, transparent 1px),
         linear-gradient(90deg, rgba(181, 202, 130, 0.22) 1px, transparent 1px);
@@ -260,7 +260,7 @@ body {
         linear-gradient(90deg, rgba(181, 202, 130, 0.2) 1px, transparent 1px),
         linear-gradient(rgba(181, 202, 130, 0.2) 1px, transparent 1px);
     background-size: 42px 30px;
-    opacity: 0.52;
+    opacity: 0.38;
     transform: perspective(520px) rotateX(58deg) scale(1.12);
     transform-origin: 50% 0;
     mask-image: linear-gradient(to bottom, transparent, black 18% 70%, transparent);
@@ -277,7 +277,7 @@ body {
     background-image:
         repeating-radial-gradient(ellipse at 50% 22%, transparent 0 20px, rgba(224, 173, 78, 0.2) 21px 22px),
         repeating-conic-gradient(from 0deg at 50% 22%, rgba(224, 173, 78, 0.16) 0deg 0.6deg, transparent 0.6deg 12deg);
-    opacity: 0.34;
+    opacity: 0.22;
     transform: translateX(-50%) rotate(-8deg) skewX(-12deg) scaleY(0.72);
     transform-origin: center center;
     mask-image: radial-gradient(ellipse at center, transparent 0 19%, black 33% 66%, transparent 82%);
@@ -295,12 +295,12 @@ body {
 @keyframes grid-warp {
     0%, 100% {
         transform: translateX(-50%) rotate(-13deg) skewX(-8deg) scaleY(0.62);
-        opacity: 0.38;
+        opacity: 0.24;
     }
 
     50% {
         transform: translateX(-50%) rotate(-8deg) skewX(-16deg) scaleY(0.48) scaleX(1.08);
-        opacity: 0.62;
+        opacity: 0.38;
     }
 }
 
@@ -324,7 +324,7 @@ body {
     border-radius: 50%;
     background-image: repeating-conic-gradient(
         from 0deg,
-        rgba(181, 202, 130, 0.26) 0deg 0.5deg,
+        rgba(181, 202, 130, 0.18) 0deg 0.5deg,
         transparent 0.5deg 6deg
     );
     mask-image: radial-gradient(circle at center, transparent 0 8%, black 22% 78%, transparent 100%);
@@ -336,14 +336,14 @@ body {
     inset: 0;
     border-radius: 50%;
     border: 1.5px solid var(--bunker-olive);
-    box-shadow: 0 0 1.4rem rgba(181, 202, 130, 0.35);
+    box-shadow: 0 0 1.4rem rgba(181, 202, 130, 0.2);
     opacity: 0;
     animation: well-collapse 7s linear infinite;
 }
 
 .gravity-well__ring:nth-child(odd) {
     border-color: var(--bunker-amber);
-    box-shadow: 0 0 1.4rem rgba(224, 173, 78, 0.4);
+    box-shadow: 0 0 1.4rem rgba(224, 173, 78, 0.25);
 }
 
 .gravity-well__ring:nth-child(2) { animation-delay: 0s; }
@@ -355,8 +355,8 @@ body {
 
 @keyframes well-collapse {
     0% { transform: scale(1.05); opacity: 0; }
-    10% { opacity: 0.9; }
-    82% { opacity: 0.45; }
+    10% { opacity: 0.6; }
+    82% { opacity: 0.3; }
     100% { transform: scale(0.02); opacity: 0; }
 }
 
@@ -374,7 +374,7 @@ body {
     display: flex;
     justify-content: space-between;
     color: var(--bunker-green);
-    font-size: 0.63rem;
+    font-size: 0.68rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
 }
@@ -411,7 +411,7 @@ body {
 
 .status-glyph--center {
     font-family: var(--terminal-font);
-    color: var(--bunker-muted);
+    color: var(--bunker-olive);
     letter-spacing: 0.12em;
     text-shadow: 0 0 0.45rem rgba(181, 202, 130, 0.35);
 }
@@ -470,7 +470,7 @@ body {
     font-size: 0.48rem;
     font-style: normal;
     line-height: 1;
-    box-shadow: 0 0 0.6rem rgba(212, 154, 57, 0.7);
+    box-shadow: none;
     animation: signalPulse 3s ease-in-out infinite;
 }
 
@@ -729,7 +729,7 @@ body {
 .social a:hover,
 .social a:focus-visible {
     color: var(--bunker-amber);
-    background: rgba(212, 154, 57, 0.06);
+    background: rgba(212, 154, 57, 0.035);
     outline: none;
 }
 
@@ -782,7 +782,7 @@ body {
     inset: 0;
     background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 4px);
     mix-blend-mode: screen;
-    opacity: 0.35;
+    opacity: 0.2;
 }
 
 .player-viewport::after {
@@ -791,8 +791,8 @@ body {
     left: 0;
     width: 1px;
     background: var(--bunker-amber);
-    box-shadow: 0 0 0.7rem rgba(212, 154, 57, 0.5);
-    opacity: 0.45;
+    box-shadow: none;
+    opacity: 0.2;
 }
 
 .player-scanline {
@@ -804,8 +804,8 @@ body {
     height: 1px;
     pointer-events: none;
     background: var(--bunker-amber);
-    box-shadow: 0 0 0.8rem rgba(212, 154, 57, 0.8);
-    opacity: 0.6;
+    box-shadow: 0 0 0.45rem rgba(212, 154, 57, 0.35);
+    opacity: 0.34;
     animation: playerScan 7s linear infinite;
 }
 
@@ -830,9 +830,9 @@ iframe#spotify-player {
     z-index: 2;
     inset: 0;
     pointer-events: none;
-    background: var(--bunker-olive);
+    background: #3f875b;
     mix-blend-mode: color;
-    opacity: 0.42;
+    opacity: 0.38;
 }
 
 @media (max-width: 600px) {

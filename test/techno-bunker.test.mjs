@@ -54,7 +54,7 @@ test('bunker atmosphere is CSS-only and respects reduced motion', () => {
     assert.match(css, /@keyframes frame-runner/);
     assert.match(css, /frame-runner 14s ease-in-out infinite reverse/);
     assert.match(css, /spotify-tint/);
-    assert.match(css, /\.spotify-tint[^}]*opacity: 0\.42/s);
+    assert.match(css, /\.spotify-tint[^}]*opacity: 0\.38/s);
     assert.match(css, /prefers-reduced-motion: reduce/);
     assert.match(css, /@keyframes glyph-orbit/);
     assert.match(css, /@keyframes grid-warp/);
