@@ -23,6 +23,7 @@ test('homepage keeps the existing media and logo inside the terminal shell', () 
     assert.match(html, /class="terminal-shell"/);
     assert.match(html, /class="spacetime-grid"/);
     assert.match(html, /class="site-status"/);
+    assert.match(html, /<header class="site-status" aria-hidden="true">/);
     assert.match(html, /class="status-glyph__text"/);
     assert.match(html, /class="lunar-phase"/);
     assert.match(html, /class="terminal-readout"/);

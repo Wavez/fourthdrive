@@ -652,9 +652,57 @@ body {
     box-sizing: border-box;
     width: min(100%, 460px);
     margin-top: 0.6rem;
+    border: 1px solid transparent;
+    outline: 1px solid transparent;
+    outline-offset: -4px;
+}
+
+.social-panel::before,
+#spotify-container::before {
+    position: absolute;
+    inset: 0;
+    content: "";
     border: 1px solid rgba(181, 202, 130, 0.55);
     outline: 1px solid rgba(181, 202, 130, 0.28);
     outline-offset: -4px;
+    pointer-events: none;
+    clip-path: polygon(
+        0 7px,
+        7px 0,
+        calc(100% - 7px) 0,
+        100% 7px,
+        100% calc(100% - 7px),
+        calc(100% - 7px) 100%,
+        7px 100%,
+        0 calc(100% - 7px)
+    );
+}
+
+.social-panel::after,
+#spotify-container::after {
+    position: absolute;
+    inset: 4px;
+    content: "";
+    border: 1px solid rgba(181, 202, 130, 0.28);
+    pointer-events: none;
+    clip-path: polygon(
+        0 4px,
+        4px 0,
+        calc(100% - 4px) 0,
+        100% 4px,
+        100% calc(100% - 4px),
+        calc(100% - 4px) 100%,
+        4px 100%,
+        0 calc(100% - 4px)
+    );
+}
+
+.social-panel::before {
+    z-index: 0;
+}
+
+.social-panel::after {
+    z-index: 0;
 }
 
 .social {
@@ -662,6 +710,8 @@ body {
     justify-content: center;
     align-items: stretch;
     gap: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .panel-ornament {
@@ -671,6 +721,7 @@ body {
     transform: translate(-50%, -50%);
     overflow: visible;
     pointer-events: none;
+    z-index: 2;
 }
 
 .panel-ornament rect {
@@ -745,11 +796,19 @@ body {
     width: min(100%, 460px);
     margin-top: 0.7rem;
     padding: 0.7rem;
-    border: 1px solid rgba(181, 202, 130, 0.55);
-    outline: 1px solid rgba(181, 202, 130, 0.28);
+    border: 1px solid transparent;
+    outline: 1px solid transparent;
     outline-offset: -4px;
     background: var(--bunker-ink);
     box-shadow: inset 0 0 1.5rem rgba(0, 0, 0, 0.45);
+}
+
+#spotify-container::before {
+    z-index: 4;
+}
+
+#spotify-container::after {
+    z-index: 4;
 }
 
 .player-header {
@@ -765,9 +824,10 @@ body {
 .player-viewport {
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(82, 97, 73, 0.85);
+    border: 0;
+    border-radius: 1rem;
     background: #101810;
-    box-shadow: inset 0 0 1rem rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(181, 202, 130, 0.08);
+    box-shadow: inset 0 0 1rem rgba(0, 0, 0, 0.65);
 }
 
 .player-viewport::before,
