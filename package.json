@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "test": "node --test",
     "preview": "vite preview"
   },
   "keywords": ["music", "producer", "techno", "synths", "modular", "spotify", "glitch", "animations"],

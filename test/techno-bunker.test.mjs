@@ -1,0 +1,84 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import test from 'node:test';
+
+const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+const css = await readFile(new URL('../src/style.css', import.meta.url), 'utf8');
+const logo = await readFile(new URL('../public/logo.svg', import.meta.url), 'utf8');
+
+test('homepage keeps the existing media and logo inside the terminal shell', () => {
+    assert.match(html, /class="terminal-shell"/);
+    assert.match(html, /class="spacetime-grid"/);
+    assert.match(html, /class="site-status"/);
+    assert.match(html, /class="terminal-readout"/);
+    assert.match(html, /aria-label="Carrier acquired"/);
+    assert.match(html, /id="logo"/);
+    assert.match(html, /class="logo-frame"/);
+    assert.match(html, /class="frame-runner"/);
+    assert.match(html, /class="frame-runner frame-runner--reverse"/);
+    assert.match(html, /id="spotify-player"/);
+    assert.match(html, /data-spotify-url=/);
+    assert.match(html, /iframe-api\/v1/);
+    assert.doesNotMatch(html, /<iframe id="spotify-player"/);
+    assert.match(html, /class="player-viewport"/);
+    assert.match(html, /class="player-scanline"/);
+    assert.match(html, /class="spotify-tint"/);
+    assert.match(html, /class="social"/);
+});
+
+test('bunker atmosphere is CSS-only and respects reduced motion', () => {
+    assert.match(css, /--bunker-/);
+    assert.match(css, /--bunker-ink:/);
+    assert.match(css, /--bunker-paper:/);
+    assert.match(css, /--bunker-olive:/);
+    assert.match(css, /--bunker-signal:/);
+    assert.match(css, /\.terminal-shell::before/);
+    assert.match(css, /@keyframes logo-frame-motion/);
+    assert.match(css, /@keyframes frame-runner/);
+    assert.match(css, /frame-runner 14s ease-in-out infinite reverse/);
+    assert.match(css, /spotify-tint/);
+    assert.match(css, /\.spotify-tint[^}]*opacity: 0\.42/s);
+    assert.match(css, /prefers-reduced-motion: reduce/);
+    assert.match(css, /@keyframes glyph-orbit/);
+    assert.match(css, /@keyframes grid-warp/);
+    assert.match(css, /background-size: 42px 42px/);
+    assert.match(css, /terminal-readout__cursor/);
+    assert.match(css, /@keyframes chromatic-degradation/);
+    assert.match(css, /text-shadow: 0\.2em 0/);
+});
+
+test('logo animation adds breathing, eye focus, and power-cycle motion', () => {
+    assert.match(logo, /id="cloud"/);
+    assert.match(logo, /id="cloud-rain"/);
+    assert.match(logo, /id="text-lockup"/);
+    assert.doesNotMatch(logo, /id="text-scanline"/);
+    assert.match(logo, /id="eye-inner"/);
+    assert.match(logo, /@keyframes cloud-pressure/);
+    assert.match(logo, /stroke="#d7ec99" stroke-width="1\.5"/);
+    assert.match(logo, /<path d="M43 58l-1 10" \/>/);
+    assert.match(logo, /#cloud-rain path/);
+    assert.match(logo, /@keyframes cloud-rain-fall/);
+    assert.match(logo, /transform: translateY\(120px\)/);
+    assert.match(logo, /path:nth-child\(4\).*0\.5s/s);
+    assert.match(logo, /path:nth-child\(6\).*3s/s);
+    assert.match(logo, /scale\(1\.08, 1\.02\)/);
+    assert.match(logo, /@keyframes eye-focus/);
+    assert.match(logo, /@keyframes tear-fall/);
+    assert.match(logo, /@keyframes spinner[\s\S]*scale\(1\.12\)/);
+    assert.match(logo, /@keyframes bone-twitch/);
+    assert.match(logo, /@keyframes bones[\s\S]*scaleX\(1\.05\)/);
+    assert.match(logo, /@keyframes text-signal/);
+    assert.match(logo, /@keyframes glyph-float/);
+    assert.doesNotMatch(logo, /@keyframes text-scan/);
+    assert.doesNotMatch(logo, /id="text-crawler"/);
+    assert.doesNotMatch(logo, /id="text-distortion-layer"/);
+    assert.doesNotMatch(logo, /feDisplacementMap/);
+    assert.doesNotMatch(logo, /spinner-pulse/);
+    assert.match(logo, /animation: cloud-pressure/);
+    assert.match(logo, /eye-focus 4\.6s/);
+    assert.match(logo, /animation: tear-fall/);
+    assert.doesNotMatch(logo, /@keyframes power-surge/);
+    assert.match(logo, /animation: text-signal/);
+    assert.match(logo, /#text-lockup \.shape-fill/);
+    assert.match(logo, /translateY\(-1\.4px\)/);
+});

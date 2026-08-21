@@ -6,9 +6,10 @@ const CONFIG = {
 };
 
 const elements = {
-    iframe: document.getElementById('spotify-player'),
+    player: document.getElementById('spotify-player'),
     socialContainer: document.querySelector('.social'),
-    spinner: document.getElementById('spotify-spinner')
+    spinner: document.getElementById('spotify-spinner'),
+    terminalReadout: document.querySelector('.terminal-readout')
 };
 
 const state = {
@@ -21,10 +22,69 @@ const state = {
 const iconElements = elements.socialContainer ? Array.from(elements.socialContainer.children) : [];
 const resetIntervalMs = CONFIG.RESET_MULTIPLIER * CONFIG.GLITCH_INTERVAL_MS;
 
-elements.iframe?.addEventListener('load', () => {
+function revealSpotifyPlayer() {
     elements.spinner?.classList.add('hidden');
-    elements.iframe.classList.add('animate-spotify-fade-in');
-});
+    elements.player?.classList.add('animate-spotify-fade-in');
+}
+
+function startTerminalReadout() {
+    const readout = elements.terminalReadout;
+    const output = readout?.querySelector('.terminal-readout__text');
+    if (!output) return;
+
+    const lines = ['⟦ ϟ7E ⟧', '⟦ 0x04 ⟧', '░▒▓ 4TH ▓▒░', '⫷ ∿◇∿ ⫸'];
+
+    if (state.prefersReducedMotion) {
+        output.textContent = lines[0];
+        return;
+    }
+
+    let lineIndex = 0;
+    let characterIndex = 0;
+    let deleting = false;
+
+    const tick = () => {
+        const line = lines[lineIndex];
+        if (!deleting) {
+            characterIndex++;
+            output.textContent = line.slice(0, characterIndex);
+            if (characterIndex === line.length) {
+                deleting = true;
+                setTimeout(tick, 1300);
+                return;
+            }
+        } else {
+            characterIndex--;
+            output.textContent = line.slice(0, characterIndex);
+            if (characterIndex === 0) {
+                deleting = false;
+                lineIndex = (lineIndex + 1) % lines.length;
+            }
+        }
+
+        setTimeout(tick, deleting ? 55 : 105);
+    };
+
+    tick();
+}
+
+startTerminalReadout();
+
+window.onSpotifyIframeApiReady = (IFrameAPI) => {
+    if (!elements.player) return;
+
+    const spotifyUrl = elements.player.dataset.spotifyUrl;
+    if (!spotifyUrl) return;
+
+    IFrameAPI.createController(elements.player, {
+      url: spotifyUrl,
+      width: '100%',
+      height: '152',
+      theme: 'dark'
+    }, controller => {
+        controller.addListener('ready', revealSpotifyPlayer);
+    });
+};
 
 function advanceGlitch() {
     if (state.currentIndex >= iconElements.length) {
@@ -76,4 +136,3 @@ document.addEventListener('touchmove', (e) => {
         e.preventDefault();
     }
 }, { passive: false });
-

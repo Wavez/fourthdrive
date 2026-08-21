@@ -48,38 +48,59 @@
     </script>
 
 </head>
-<body>
+<body class="terminal-shell">
+<header class="site-status" aria-label="System status">
+    <span class="status-glyph" aria-label="Lower Deck 04"><span aria-hidden="true">⟟ 04</span></span>
+    <span class="status-glyph status-glyph--center" aria-label="Fourth Drive Transmission"><span class="terminal-readout" aria-hidden="true"><span class="terminal-readout__text"></span><span class="terminal-readout__cursor">▌</span></span></span>
+    <span class="signal-status" aria-label="Carrier acquired"><i aria-hidden="true">◉</i></span>
+</header>
+<main class="terminal-frame">
+<div class="spacetime-grid" aria-hidden="true"></div>
 <div class="container">
-    <div id="logo" title="Fourth Drive logo">
+    <div id="logo" class="logo-frame" title="Fourth Drive logo">
+        <span class="frame-runner" aria-hidden="true"></span>
+        <span class="frame-runner frame-runner--reverse" aria-hidden="true"></span>
         <img src="/logo.svg" alt="Fourth Drive logo" decoding="async" fetchpriority="high"/>
     </div>
     <div class="social">
         <a href="https://ffm.bio/fourthdrive" target="_blank" rel="noopener noreferrer" title="feature.fm"
-           aria-label="feature.fm">
+           aria-label="feature.fm" data-label="PLAY">
             <svg width="256" height="256" viewBox="0 0 256 256" aria-hidden="true" focusable="false">
                 <use href="/icons.svg#play"/>
             </svg>
         </a>
         <a href="https://www.instagram.com/fourthdrive" target="_blank" rel="noopener noreferrer" title="Instagram"
-           aria-label="Instagram">
+           aria-label="Instagram" data-label="INSTAGRAM">
             <svg width="256" height="256" viewBox="0 0 256 256" aria-hidden="true" focusable="false">
                 <use href="/icons.svg#instagram"/>
             </svg>
         </a>
         <a href="https://fourthdrive.gumroad.com" target="_blank" rel="noopener noreferrer" title="gumroad"
-           aria-label="gumroad">
+           aria-label="gumroad" data-label="GUMROAD">
             <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <use href="/icons.svg#gumroad"/>
             </svg>
         </a>
     </div>
-    <div id="spotify-container">
-        <div id="spotify-spinner" class="spinner">
-            <div class="spinner-ring"></div>
+    <section id="spotify-container" aria-label="Now playing">
+        <div class="player-header">
+            <span>&gt; NOW PLAYING</span>
+            <span>SPOTIFY LINK</span>
         </div>
-        <iframe id="spotify-player" src="https://open.spotify.com/embed/album/3oYY2FwqAXNHlvlXgVbEjh" width="400" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
+        <div class="player-viewport">
+            <div id="spotify-spinner" class="spinner">
+                <div class="spinner-ring"></div>
+            </div>
+            <div class="player-scanline" aria-hidden="true"></div>
+            <div id="spotify-player"
+                 data-spotify-url="https://open.spotify.com/album/3oYY2FwqAXNHlvlXgVbEjh?theme=dark"
+                 aria-label="Spotify player"></div>
+            <div class="spotify-tint" aria-hidden="true"></div>
+        </div>
+    </section>
 </div>
+</main>
+<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
 <script type="module" src="src/index.js"></script>
 </body>
 </html>

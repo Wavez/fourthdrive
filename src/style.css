@@ -1,68 +1,25 @@
 :root {
-    /* Color palette */
-    --glitch-cyan: cyan;
-    --glitch-red: red;
-    --star-color: #fff;
+    --bunker-ink: #0d120e;
+    --bunker-paper: #eee8d8;
+    --bunker-olive: #b5ca82;
+    --bunker-signal: #e0ad4e;
+    --bunker-rust: #bb5b43;
+    --bunker-black: var(--bunker-ink);
+    --bunker-panel: #1a211a;
+    --bunker-line: #526149;
+    --bunker-white: var(--bunker-paper);
+    --bunker-green: var(--bunker-olive);
+    --bunker-amber: var(--bunker-signal);
+    --bunker-red: var(--bunker-rust);
+    --bunker-muted: #909b7d;
+    --glitch-cyan: #c9df98;
+    --glitch-red: var(--bunker-rust);
+    --terminal-font: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
     
     /* Animation timing */
     --glitch-duration: 200ms;
-    --star-scroll-duration: 30s;
     --logo-glitch-duration: 5s;
-    --bg-gradient-duration: 8s;
     --spotify-fade-duration: 2s;
-    
-    /* Layout */
-    --star-field-height: 4000px;
-    --star-field-offset: 2000px;
-    
-    /* Background gradient */
-    --bg-gradient: linear-gradient(
-            132deg,
-            #050505,
-            #0a0f1c,
-            #1b263b,
-            #2c0a12,
-            #3b0a1e,
-            #0d1b2a,
-            #050505
-    );
-    
-    /* Star field patterns */
-    --star-field-small: radial-gradient(1px 1px at 5% 5%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 10% 90%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 15% 25%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 20% 75%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 25% 40%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 30% 60%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 35% 10%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 40% 90%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 45% 20%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 50% 80%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 55% 30%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 60% 70%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 65% 50%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 70% 15%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 75% 85%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 80% 35%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 85% 65%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 90% 45%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(1px 1px at 95% 25%, var(--star-color) 100%, transparent 0);
-    
-    --star-field-medium: radial-gradient(2px 2px at 12% 60%, var(--star-color) 100%, transparent 0),
-                         radial-gradient(2px 2px at 18% 10%, var(--star-color) 100%, transparent 0),
-                         radial-gradient(2px 2px at 27% 95%, var(--star-color) 100%, transparent 0),
-                         radial-gradient(2px 2px at 34% 45%, var(--star-color) 100%, transparent 0),
-                         radial-gradient(2px 2px at 43% 70%, var(--star-color) 100%, transparent 0),
-                         radial-gradient(2px 2px at 52% 5%, var(--star-color) 100%, transparent 0),
-                         radial-gradient(2px 2px at 63% 85%, var(--star-color) 100%, transparent 0),
-                         radial-gradient(2px 2px at 76% 60%, var(--star-color) 100%, transparent 0),
-                         radial-gradient(2px 2px at 87% 30%, var(--star-color) 100%, transparent 0);
-    
-    --star-field-large: radial-gradient(3px 3px at 22% 38%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(3px 3px at 48% 25%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(3px 3px at 66% 12%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(3px 3px at 79% 92%, var(--star-color) 100%, transparent 0),
-                        radial-gradient(3px 3px at 92% 58%, var(--star-color) 100%, transparent 0);
 }
 
 #spotify-container {
@@ -134,9 +91,9 @@ body {
     padding: 0;
     text-align: center;
     overflow: hidden;
-    background: var(--bg-gradient);
-    background-size: 300% 300%;
-    animation: backgroundGradient var(--bg-gradient-duration) ease-in-out infinite;
+    background: radial-gradient(circle at 50% 42%, rgba(93, 117, 67, 0.13), transparent 42%), var(--bunker-black);
+    color: var(--bunker-white);
+    font-family: var(--terminal-font);
 }
 
 #logo {
@@ -181,57 +138,455 @@ body {
     }
 }
 
-/* Background gradient animation */
-@keyframes backgroundGradient {
-    0% {
-        background-position: 0 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0 50%;
-    }
-}
-
-/* Star field animation */
-body::before,
-body::after {
-    z-index: -1;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: var(--star-field-height);
-    top: 0;
-    left: 0;
-    background: var(--star-field-small), var(--star-field-medium), var(--star-field-large);
-    animation: starScroll var(--star-scroll-duration) linear infinite;
-}
-
-body::after {
-    top: var(--star-field-offset);
-}
-
-@keyframes starScroll {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(calc(-1 * var(--star-field-offset)));
-    }
-}
-
 /* Main container */
 .container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    min-height: 100dvh;
+    min-height: min(100dvh, 760px);
+    width: min(100% - 2rem, 760px);
+    padding: 3.5rem 1rem 1rem;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
 }
 
 .container > * {
     align-self: center;
+}
+
+.terminal-shell {
+    position: relative;
+    isolation: isolate;
+    min-height: 100dvh;
+    background:
+        linear-gradient(90deg, transparent 0 8%, rgba(255, 255, 255, 0.025) 8.05% 8.1%, transparent 8.15% 91.85%, rgba(255, 255, 255, 0.025) 91.9% 91.95%, transparent 92%),
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.016) 0 1px, transparent 1px 5px),
+        radial-gradient(circle at 50% 42%, rgba(93, 117, 67, 0.12), transparent 40%),
+        var(--bunker-black);
+}
+
+.terminal-shell::before,
+.terminal-shell::after {
+    position: fixed;
+    z-index: -1;
+    content: "";
+    pointer-events: none;
+}
+
+.terminal-shell::before {
+    inset: 1rem;
+    border: 1px solid rgba(82, 97, 73, 0.72);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.75), 0 0 60px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-shell::after {
+    inset: 0;
+    opacity: 0.2;
+    background: radial-gradient(circle at 50% 44%, transparent 0 28%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.spacetime-grid {
+    position: fixed;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.1;
+    background-image:
+        linear-gradient(rgba(181, 202, 130, 0.22) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(181, 202, 130, 0.22) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(ellipse at 50% 36%, black 0 34%, rgba(0, 0, 0, 0.5) 66%, transparent 100%);
+}
+
+.spacetime-grid::before {
+    position: absolute;
+    content: "";
+    top: 34%;
+    left: -12%;
+    width: 124%;
+    height: 72%;
+    background-image:
+        linear-gradient(90deg, rgba(181, 202, 130, 0.2) 1px, transparent 1px),
+        linear-gradient(rgba(181, 202, 130, 0.2) 1px, transparent 1px);
+    background-size: 42px 30px;
+    opacity: 0.52;
+    transform: perspective(520px) rotateX(58deg) scale(1.12);
+    transform-origin: 50% 0;
+    mask-image: linear-gradient(to bottom, transparent, black 18% 70%, transparent);
+}
+
+.spacetime-grid::after {
+    position: absolute;
+    content: "";
+    top: 10%;
+    left: 50%;
+    width: min(62vw, 560px);
+    height: min(60vw, 520px);
+    border-radius: 50%;
+    background-image:
+        repeating-radial-gradient(ellipse at 50% 22%, transparent 0 20px, rgba(224, 173, 78, 0.2) 21px 22px),
+        repeating-conic-gradient(from 0deg at 50% 22%, rgba(224, 173, 78, 0.16) 0deg 0.6deg, transparent 0.6deg 12deg);
+    opacity: 0.34;
+    transform: translateX(-50%) rotate(-8deg) skewX(-12deg) scaleY(0.72);
+    transform-origin: center center;
+    mask-image: radial-gradient(ellipse at center, transparent 0 19%, black 33% 66%, transparent 82%);
+    animation: grid-warp 16s ease-in-out infinite;
+}
+
+.terminal-frame {
+    z-index: 1;
+}
+
+#logo {
+    z-index: 1;
+}
+
+@keyframes grid-warp {
+    0%, 100% {
+        transform: translateX(-50%) rotate(-13deg) skewX(-8deg) scaleY(0.62);
+        opacity: 0.38;
+    }
+
+    50% {
+        transform: translateX(-50%) rotate(-8deg) skewX(-16deg) scaleY(0.48) scaleX(1.08);
+        opacity: 0.62;
+    }
+}
+
+.lunar-system {
+    position: absolute;
+    z-index: 1;
+    top: 2.5rem;
+    left: 50%;
+    width: min(54vw, 470px);
+    aspect-ratio: 1;
+    pointer-events: none;
+    color: var(--bunker-olive);
+    opacity: 0.34;
+    filter: saturate(0.7);
+    transform: translateX(-50%);
+}
+
+.lunar-system__moon,
+.lunar-system__eclipse,
+.lunar-system__corona,
+.lunar-system__orbit {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.lunar-system__moon {
+    inset: auto;
+    top: 5%;
+    left: 29%;
+    width: 42%;
+    height: 42%;
+    background: transparent;
+    box-shadow: none;
+}
+
+.lunar-system__eclipse {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle at 38% 34%, #111711 0, #030503 54%, #000 76%);
+    border: 1px solid rgba(0, 0, 0, 0.95);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0.3rem rgba(0, 0, 0, 0.3), 0 0 1.2rem rgba(0, 0, 0, 0.9);
+    animation: eclipse-drift 18s ease-in-out infinite;
+}
+
+.lunar-system__moon::before {
+    position: absolute;
+    content: "";
+    inset: -12%;
+    border: 0.42rem solid transparent;
+    border-top-color: rgba(224, 173, 78, 0.82);
+    border-left-color: rgba(181, 202, 130, 0.58);
+    border-radius: 50%;
+    transform: rotate(-28deg) skewX(-12deg) scaleY(0.42);
+    filter: blur(0.6px);
+    animation: accretion-spin 9s linear infinite;
+}
+
+.lunar-system__moon::after {
+    position: absolute;
+    content: "";
+    inset: -16%;
+    border: 1px solid rgba(181, 202, 130, 0.32);
+    border-radius: 50%;
+    transform: scaleY(0.56) rotate(8deg);
+    box-shadow: 0 0 1rem rgba(224, 173, 78, 0.18);
+}
+
+.lunar-system__corona {
+    inset: auto;
+    top: 1%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    border: 1px solid rgba(224, 173, 78, 0.32);
+    box-shadow: 0 0 1.5rem rgba(224, 173, 78, 0.16);
+    animation: corona-breathe 12s ease-in-out infinite;
+}
+
+.lunar-system__orbit {
+    inset: 5%;
+    border: 1px dashed rgba(181, 202, 130, 0.26);
+    transform: rotate(-18deg) scaleY(0.55);
+    animation: orbit-drift 28s linear infinite;
+}
+
+.lunar-system__glyphs {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: clamp(0.65rem, 1.2vw, 0.95rem);
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 0.6rem rgba(181, 202, 130, 0.55);
+    transform: rotate(22deg);
+    animation: glyph-orbit 24s linear infinite reverse;
+}
+
+@keyframes eclipse-drift {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-5%); }
+}
+
+@keyframes accretion-spin {
+    to { transform: rotate(332deg) skewX(-12deg) scaleY(0.52); }
+}
+
+@keyframes corona-breathe {
+    0%, 100% { transform: scale(0.98); opacity: 0.62; }
+    50% { transform: scale(1.03); opacity: 1; }
+}
+
+@keyframes orbit-drift {
+    to { transform: rotate(342deg) scaleY(0.55); }
+}
+
+@keyframes glyph-orbit {
+    to { transform: rotate(382deg); }
+}
+
+.site-status {
+    position: fixed;
+    z-index: 2;
+    top: 1.7rem;
+    left: 2rem;
+    right: 2rem;
+    display: flex;
+    justify-content: space-between;
+    color: var(--bunker-green);
+    font-size: 0.63rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.status-glyph {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1em;
+    font-size: 0.82rem;
+    letter-spacing: 0.22em;
+    line-height: 1;
+}
+
+.status-glyph--center {
+    font-family: var(--terminal-font);
+    color: var(--bunker-muted);
+    letter-spacing: 0.12em;
+    text-shadow: 0 0 0.45rem rgba(181, 202, 130, 0.35);
+}
+
+.terminal-readout {
+    display: inline-flex;
+    align-items: center;
+    min-width: 15ch;
+    justify-content: flex-start;
+    white-space: pre;
+    text-align: left;
+}
+
+.terminal-readout__text {
+    display: inline-block;
+    text-shadow: 0.06em 0 rgba(187, 91, 67, 0.45), -0.06em 0 rgba(201, 223, 152, 0.5);
+    animation: chromatic-degradation 7s steps(1, end) infinite;
+}
+
+.terminal-readout__cursor {
+    color: var(--bunker-signal);
+    animation: terminal-cursor 0.85s steps(1, end) infinite;
+}
+
+.signal-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.signal-status i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.7rem;
+    height: 0.7rem;
+    background: var(--bunker-amber);
+    color: var(--bunker-ink);
+    font-size: 0.48rem;
+    font-style: normal;
+    line-height: 1;
+    box-shadow: 0 0 0.6rem rgba(212, 154, 57, 0.7);
+    animation: signalPulse 3s ease-in-out infinite;
+}
+
+@keyframes signalPulse {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; }
+}
+
+@keyframes terminal-cursor {
+    0%, 48% { opacity: 1; }
+    49%, 100% { opacity: 0; }
+}
+
+@keyframes chromatic-degradation {
+    0%, 78%, 100% {
+        text-shadow: 0.06em 0 rgba(187, 91, 67, 0.45), -0.06em 0 rgba(201, 223, 152, 0.5);
+        transform: translateX(0);
+    }
+
+    79% {
+        text-shadow: 0.2em 0 rgba(187, 91, 67, 0.8), -0.2em 0 rgba(201, 223, 152, 0.85);
+        transform: translateX(0.04em);
+    }
+
+    81% {
+        text-shadow: -0.14em 0 rgba(187, 91, 67, 0.7), 0.14em 0 rgba(201, 223, 152, 0.75);
+        transform: translateX(-0.03em);
+    }
+}
+
+.terminal-frame {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 100dvh;
+    margin: 0 auto;
+    width: min(100%, 920px);
+    border-inline: 1px solid rgba(82, 97, 73, 0.6);
+    background: linear-gradient(90deg, rgba(181, 202, 130, 0.045), transparent 12% 88%, rgba(181, 202, 130, 0.045));
+}
+
+.terminal-frame::before,
+.terminal-frame::after {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+}
+
+.terminal-frame::before {
+    top: 8%;
+    bottom: 8%;
+    left: 0.55rem;
+    width: 0.25rem;
+    opacity: 0.7;
+    background: repeating-linear-gradient(to bottom, var(--bunker-line) 0 1px, transparent 1px 10px);
+}
+
+.terminal-frame::after {
+    right: 0.55rem;
+    bottom: 8%;
+    width: 0.25rem;
+    height: 28%;
+    opacity: 0.7;
+    background: repeating-linear-gradient(to bottom, var(--bunker-line) 0 1px, transparent 1px 10px);
+}
+
+#logo {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: min(48vw, 220px);
+    padding: 1.5rem 2rem 0.8rem;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+}
+
+#logo > img {
+    position: relative;
+    z-index: 1;
+}
+
+.logo-frame {
+    animation: logo-frame-motion 9s ease-in-out infinite;
+    transform-origin: center center;
+}
+
+@keyframes logo-frame-motion {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        filter: none;
+    }
+
+    42% {
+        transform: translateY(-1.5px) rotate(-0.35deg);
+        filter: drop-shadow(0 0 0.7rem rgba(181, 202, 130, 0.12));
+    }
+
+    48% {
+        transform: translateY(0.5px) rotate(0.2deg);
+        filter: none;
+    }
+}
+
+.frame-runner {
+    position: absolute;
+    z-index: 2;
+    width: 0.45rem;
+    height: 0.45rem;
+    border: 1px solid var(--bunker-muted);
+    pointer-events: none;
+    animation: frame-runner 14s ease-in-out infinite;
+}
+
+.frame-runner--reverse {
+    animation: frame-runner 14s ease-in-out infinite reverse;
+}
+
+@keyframes frame-runner {
+    0%, 100% {
+        top: -0.3rem;
+        left: -0.3rem;
+    }
+
+    25% {
+        top: -0.3rem;
+        left: calc(100% - 0.15rem);
+    }
+
+    50% {
+        top: calc(100% - 0.15rem);
+        left: calc(100% - 0.15rem);
+    }
+
+    75% {
+        top: calc(100% - 0.15rem);
+        left: -0.3rem;
+    }
+}
+
+#logo img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 /* Glitch animation */
@@ -260,22 +615,267 @@ body::after {
 .social {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    padding: 1rem;
+    align-items: center;
+    gap: 0;
+    width: min(100%, 460px);
+    padding: 1.4rem 0 1.2rem;
 }
 
 .social a {
-    color: crimson;
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-width: 8.5rem;
+    padding: 0.6rem 1rem 1.6rem;
+    color: var(--bunker-paper);
     text-decoration: none;
-    font-size: 1.7rem;
-    padding: 1rem;
+    border-inline-start: 1px solid var(--bunker-line);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 180ms ease, background-color 180ms ease;
+}
+
+.social a:last-child {
+    border-inline-end: 1px solid var(--bunker-line);
+}
+
+.social a::after {
+    position: absolute;
+    bottom: 0.35rem;
+    content: attr(data-label);
+}
+
+.social a:hover,
+.social a:focus-visible {
+    color: var(--bunker-amber);
+    background: rgba(212, 154, 57, 0.06);
+    outline: none;
 }
 
 .social a svg {
-    width: 2rem;
-    height: 2rem;
+    width: 1.15rem;
+    height: 1.15rem;
     display: inline-block;
     vertical-align: middle;
+}
+
+#spotify-container {
+    width: min(100%, 460px);
+    margin-top: 0.2rem;
+    padding: 0.7rem;
+    border: 1px solid var(--bunker-line);
+    background: var(--bunker-ink);
+    box-shadow: inset 0 0 1.5rem rgba(0, 0, 0, 0.45);
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.25rem 0.6rem;
+    color: var(--bunker-paper);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-align: left;
+}
+
+.player-header span:last-child {
+    color: var(--bunker-muted);
+}
+
+.player-viewport {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(82, 97, 73, 0.85);
+    background: #101810;
+    box-shadow: inset 0 0 1rem rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(181, 202, 130, 0.08);
+}
+
+.player-viewport::before,
+.player-viewport::after {
+    position: absolute;
+    z-index: 2;
+    content: "";
+    pointer-events: none;
+}
+
+.player-viewport::before {
+    inset: 0;
+    background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 4px);
+    mix-blend-mode: screen;
+    opacity: 0.35;
+}
+
+.player-viewport::after {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background: var(--bunker-amber);
+    box-shadow: 0 0 0.7rem rgba(212, 154, 57, 0.5);
+    opacity: 0.45;
+}
+
+.player-scanline {
+    position: absolute;
+    z-index: 3;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    pointer-events: none;
+    background: var(--bunker-amber);
+    box-shadow: 0 0 0.8rem rgba(212, 154, 57, 0.8);
+    opacity: 0.6;
+    animation: playerScan 7s linear infinite;
+}
+
+@keyframes playerScan {
+    0%, 8% { transform: translateY(0); opacity: 0; }
+    12% { opacity: 0.55; }
+    88% { opacity: 0.55; }
+    92%, 100% { transform: translateY(180px); opacity: 0; }
+}
+
+iframe#spotify-player {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border: 0;
+    border-radius: 0;
+}
+
+.spotify-tint {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    pointer-events: none;
+    background: var(--bunker-olive);
+    mix-blend-mode: color;
+    opacity: 0.42;
+}
+
+@media (max-width: 600px) {
+    .site-status {
+        top: 1.2rem;
+        left: 1.2rem;
+        right: 1.2rem;
+        font-size: 0.52rem;
+    }
+
+    .site-status > span:nth-child(2) {
+        display: none;
+    }
+
+    .lunar-system {
+        top: 2.5rem;
+        width: 88vw;
+        opacity: 0.18;
+    }
+
+    .terminal-shell::before {
+        inset: 0.65rem;
+    }
+
+    .container {
+        width: min(100% - 3rem, 460px);
+        padding-top: 4rem;
+    }
+
+    .social a {
+        min-width: 0;
+        flex: 1;
+        padding-inline: 0.45rem;
+    }
+
+    .player-scanline {
+        animation-duration: 9s;
+    }
+}
+
+.spacetime-grid::after {
+    top: 10%;
+    width: min(68vw, 640px);
+    height: min(68vw, 600px);
+    background-image:
+        repeating-linear-gradient(90deg, rgba(181, 202, 130, 0.28) 0 1px, transparent 1px 30px),
+        repeating-linear-gradient(0deg, rgba(181, 202, 130, 0.28) 0 1px, transparent 1px 30px),
+        repeating-radial-gradient(ellipse at 50% 78%, transparent 0 20px, rgba(224, 173, 78, 0.24) 21px 22px);
+    opacity: 0.5;
+    transform: translateX(-50%) perspective(520px) rotateX(62deg) scale(1.22, 0.82);
+    mask-image: linear-gradient(to bottom, transparent 0 7%, black 22% 76%, transparent 96%);
+    animation: grid-warp 16s ease-in-out infinite;
+}
+
+.lunar-system {
+    top: 2.3rem;
+    left: 50%;
+    width: min(54vw, 500px);
+    opacity: 0.42;
+    filter: none;
+    transform: translateX(-50%);
+}
+
+.black-hole {
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    width: 36%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 32%, #111711 0, #020302 56%, #000 76%);
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.95), 0 0 2rem rgba(0, 0, 0, 0.9);
+}
+
+.black-hole::before {
+    position: absolute;
+    content: "";
+    top: 35%;
+    left: -34%;
+    width: 168%;
+    height: 27%;
+    border: 0.32rem solid transparent;
+    border-top-color: rgba(224, 173, 78, 0.82);
+    border-bottom-color: rgba(181, 202, 130, 0.5);
+    border-radius: 50%;
+    transform: rotate(-9deg) skewX(-12deg);
+    filter: blur(0.45px);
+    animation: disk-orbit 11s ease-in-out infinite;
+}
+
+.black-hole::after {
+    position: absolute;
+    content: "";
+    inset: -9%;
+    border: 1px solid rgba(181, 202, 130, 0.46);
+    border-radius: 50%;
+    box-shadow: 0 0 1.2rem rgba(224, 173, 78, 0.22);
+}
+
+.black-hole__disk {
+    position: absolute;
+    z-index: 1;
+    top: 45%;
+    left: -20%;
+    width: 140%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(224, 173, 78, 0.75) 35%, rgba(238, 232, 216, 0.9) 50%, rgba(181, 202, 130, 0.65) 65%, transparent);
+    box-shadow: 0 0 0.8rem rgba(224, 173, 78, 0.55);
+    transform: rotate(-9deg);
+    animation: disk-flicker 4.8s ease-in-out infinite;
+}
+
+@keyframes disk-orbit {
+    0%, 100% { transform: rotate(-9deg) skewX(-12deg) scaleX(0.96); opacity: 0.75; }
+    50% { transform: rotate(-5deg) skewX(-18deg) scaleX(1.04); opacity: 1; }
+}
+
+@keyframes disk-flicker {
+    0%, 100% { opacity: 0.42; }
+    48% { opacity: 0.9; }
+    52% { opacity: 0.55; }
 }
 
 .glitch {
