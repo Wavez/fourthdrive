@@ -379,6 +379,22 @@ body {
     text-transform: uppercase;
 }
 
+.site-status > span {
+    flex: 1 1 0;
+}
+
+.site-status > .status-glyph {
+    justify-content: flex-start;
+}
+
+.site-status > .status-glyph--center {
+    justify-content: center;
+}
+
+.site-status > .signal-status {
+    justify-content: flex-end;
+}
+
 .status-glyph {
     display: inline-flex;
     align-items: center;
@@ -386,6 +402,11 @@ body {
     font-size: 0.82rem;
     letter-spacing: 0.22em;
     line-height: 1;
+}
+
+.status-glyph__text {
+    display: inline-block;
+    min-width: 6ch;
 }
 
 .status-glyph--center {
@@ -398,6 +419,7 @@ body {
 .terminal-readout {
     display: inline-flex;
     align-items: center;
+    width: min(34ch, 42vw);
     min-width: 15ch;
     justify-content: flex-start;
     white-space: pre;
@@ -406,8 +428,24 @@ body {
 
 .terminal-readout__text {
     display: inline-block;
-    text-shadow: 0.06em 0 rgba(187, 91, 67, 0.45), -0.06em 0 rgba(201, 223, 152, 0.5);
-    animation: chromatic-degradation 7s steps(1, end) infinite;
+}
+
+.terminal-word {
+    display: inline-block;
+}
+
+.terminal-word--selected {
+    padding-inline: 0.12em;
+    color: var(--bunker-ink);
+    background: var(--bunker-signal);
+    animation: terminal-selection 520ms steps(2, end) infinite;
+}
+
+@keyframes terminal-selection {
+    50% {
+        color: var(--bunker-signal);
+        background: var(--bunker-ink);
+    }
 }
 
 .terminal-readout__cursor {
@@ -436,6 +474,15 @@ body {
     animation: signalPulse 3s ease-in-out infinite;
 }
 
+.signal-status .lunar-phase {
+    width: 1.25rem;
+    height: 1.25rem;
+    background: transparent;
+    color: var(--bunker-amber);
+    font-size: 1.05rem;
+    box-shadow: none;
+}
+
 @keyframes signalPulse {
     0%, 100% { opacity: 0.45; }
     50% { opacity: 1; }
@@ -444,23 +491,6 @@ body {
 @keyframes terminal-cursor {
     0%, 48% { opacity: 1; }
     49%, 100% { opacity: 0; }
-}
-
-@keyframes chromatic-degradation {
-    0%, 78%, 100% {
-        text-shadow: 0.06em 0 rgba(187, 91, 67, 0.45), -0.06em 0 rgba(201, 223, 152, 0.5);
-        transform: translateX(0);
-    }
-
-    79% {
-        text-shadow: 0.2em 0 rgba(187, 91, 67, 0.8), -0.2em 0 rgba(201, 223, 152, 0.85);
-        transform: translateX(0.04em);
-    }
-
-    81% {
-        text-shadow: -0.14em 0 rgba(187, 91, 67, 0.7), 0.14em 0 rgba(201, 223, 152, 0.75);
-        transform: translateX(-0.03em);
-    }
 }
 
 .terminal-frame {
@@ -517,7 +547,14 @@ body {
     overflow: visible;
 }
 
-#logo > img {
+#logo > .logo-frame {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+.logo-frame > img {
     position: relative;
     z-index: 1;
 }

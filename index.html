@@ -54,9 +54,9 @@
 <span class="deco-corner deco-corner--bl" aria-hidden="true"></span>
 <span class="deco-corner deco-corner--br" aria-hidden="true"></span>
 <header class="site-status" aria-label="System status">
-    <span class="status-glyph" aria-label="Lower Deck 04"><span aria-hidden="true">⟟ 04</span></span>
+    <span class="status-glyph" aria-label="Lunar coordinate"><span class="status-glyph__text" aria-hidden="true">⟟ 04</span></span>
     <span class="status-glyph status-glyph--center" aria-label="Fourth Drive Transmission"><span class="terminal-readout" aria-hidden="true"><span class="terminal-readout__text"></span><span class="terminal-readout__cursor">▌</span></span></span>
-    <span class="signal-status" aria-label="Carrier acquired"><i aria-hidden="true">◉</i></span>
+    <span class="signal-status" aria-label="Lunar phase: waxing crescent"><i class="lunar-phase" aria-hidden="true">◐</i></span>
 </header>
 <main class="terminal-frame">
 <div class="spacetime-grid" aria-hidden="true"></div>
@@ -73,8 +73,10 @@
     <div class="logo-orbit">
         <span class="frame-runner" aria-hidden="true"></span>
         <span class="frame-runner frame-runner--reverse" aria-hidden="true"></span>
-        <div id="logo" class="logo-frame" title="Fourth Drive logo">
-            <img src="/logo.svg" alt="Fourth Drive logo" decoding="async" fetchpriority="high"/>
+        <div id="logo" title="Fourth Drive logo">
+            <div class="logo-frame">
+                <img src="/logo.svg" alt="Fourth Drive logo" decoding="async" fetchpriority="high"/>
+            </div>
         </div>
     </div>
     <div class="social-panel">

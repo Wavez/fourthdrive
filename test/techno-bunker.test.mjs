@@ -1,19 +1,36 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
+import {
+    buildRandomTerminalLine,
+    getCommandResponse,
+    getTransmissionResponse,
+    nextTerminalLine
+} from '../src/terminal/content.js';
 
 const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 const css = await readFile(new URL('../src/style.css', import.meta.url), 'utf8');
+const script = await readFile(new URL('../src/index.js', import.meta.url), 'utf8');
+const terminalContent = await readFile(new URL('../src/terminal/content.js', import.meta.url), 'utf8');
+const terminalReadout = await readFile(new URL('../src/terminal/readout.js', import.meta.url), 'utf8');
+const statusCycle = await readFile(new URL('../src/status-cycle.js', import.meta.url), 'utf8');
+const socialGlitch = await readFile(new URL('../src/social-glitch.js', import.meta.url), 'utf8');
+const spotify = await readFile(new URL('../src/spotify.js', import.meta.url), 'utf8');
+const terminalScript = `${terminalContent}\n${terminalReadout}`;
 const logo = await readFile(new URL('../public/logo.svg', import.meta.url), 'utf8');
 
 test('homepage keeps the existing media and logo inside the terminal shell', () => {
     assert.match(html, /class="terminal-shell"/);
     assert.match(html, /class="spacetime-grid"/);
     assert.match(html, /class="site-status"/);
+    assert.match(html, /class="status-glyph__text"/);
+    assert.match(html, /class="lunar-phase"/);
     assert.match(html, /class="terminal-readout"/);
-    assert.match(html, /aria-label="Carrier acquired"/);
+    assert.match(html, /aria-label="Lunar phase: waxing crescent"/);
     assert.match(html, /id="logo"/);
     assert.match(html, /class="logo-frame"/);
+    assert.match(html, /<div id="logo"[\s\S]*<div class="logo-frame">/);
+    assert.doesNotMatch(html, /<div id="logo" class="logo-frame"/);
     assert.match(html, /class="frame-runner"/);
     assert.match(html, /class="frame-runner frame-runner--reverse"/);
     assert.match(html, /id="spotify-player"/);
@@ -43,8 +60,88 @@ test('bunker atmosphere is CSS-only and respects reduced motion', () => {
     assert.match(css, /@keyframes grid-warp/);
     assert.match(css, /background-size: 42px 42px/);
     assert.match(css, /terminal-readout__cursor/);
-    assert.match(css, /@keyframes chromatic-degradation/);
-    assert.match(css, /text-shadow: 0\.2em 0/);
+    assert.doesNotMatch(css, /chromatic-degradation/);
+    assert.match(css, /\.signal-status \.lunar-phase[^}]*box-shadow: none/s);
+    assert.match(css, /\.signal-status \.lunar-phase[^}]*width: 1\.25rem/s);
+    assert.match(css, /\.signal-status \.lunar-phase[^}]*font-size: 1\.05rem/s);
+    assert.match(css, /\.site-status > span[^}]*flex: 1 1 0/s);
+    assert.match(css, /\.status-glyph--center[^}]*justify-content: center/s);
+});
+
+test('terminal readout keeps one cancellable timer', () => {
+    assert.match(terminalReadout, /terminalTimer = null/);
+    assert.match(terminalReadout, /clearTimeout\(terminalTimer\)/);
+    assert.match(terminalReadout, /scheduleTerminalPhase\(tick/);
+    assert.match(terminalReadout, /beginNextTerminalLine/);
+    assert.match(terminalScript, /ORBITAL DESYNC/);
+    assert.match(terminalScript, /ЛУННЫЙ УЗЕЛ/);
+    assert.match(terminalScript, /未知の物体/);
+    assert.match(terminalScript, /☾|◐|◒/);
+    assert.match(terminalScript, /ЛУННЫЙ|ΣΗΜΑ|信号幽霊/);
+    assert.match(terminalScript, /Math\.random\(\)/);
+    assert.match(terminalScript, /nextTerminalLine/);
+    assert.match(terminalScript, /terminalTiming/);
+    assert.match(terminalReadout, /correctionMode/);
+    assert.match(terminalReadout, /correctionTarget/);
+    assert.match(terminalReadout, /selectRandomTerminalWord/);
+    assert.match(css, /\.terminal-word--selected/);
+    assert.match(terminalContent, /> TRACE/);
+    assert.match(terminalContent, /DECODE/);
+    assert.match(terminalContent, /ARCHIVE \/\/ DON/);
+    assert.match(terminalContent, /WARNING: OBJECT INSIDE/);
+    assert.match(terminalContent, /terminalLineFactories/);
+    assert.match(terminalContent, /> whoami/);
+    assert.match(terminalContent, /> cat \/etc\/orbit/);
+    assert.match(terminalReadout, /commandResponse/);
+    assert.match(terminalReadout, /output\.textContent = ''/);
+    assert.match(terminalContent, /getTransmissionResponse/);
+    assert.match(terminalContent, /PACKET ACCEPTED|SIGNAL CAST|ECHO RETURNED/);
+    assert.match(terminalContent, /meaning unstable|DEVICE DENIES EXISTING|MEMORY OF FUTURE EVENT/);
+    assert.match(terminalContent, /terminalImpossibleLines/);
+    assert.match(terminalContent, /mutateTerminalText/);
+    assert.match(terminalContent, /00:00:BEFORE/);
+    assert.match(terminalContent, /YOU ARE THE INPUT/);
+    assert.match(terminalContent, /ECHO \/\/ ECHO/);
+    assert.match(terminalContent, /MEMORY EMBARRASSED/);
+    assert.match(terminalContent, /SIGИAL|SΙGNAL/);
+    assert.match(terminalContent, /buildRandomTerminalLine/);
+    assert.match(terminalContent, /terminalFragments/);
+    assert.match(terminalReadout, /getCommandResponse/);
+    assert.match(terminalContent, /↳/);
+    assert.match(terminalReadout, /commandHistory/);
+    assert.match(terminalReadout, /simulateTerminalNavigation/);
+    assert.match(terminalContent, /terminalNavigation/);
+    assert.match(terminalReadout, /step < 3/);
+    assert.match(terminalReadout, /Math\.random\(\) < 0\.72/);
+    assert.match(terminalReadout, /terminal-word--selected/);
+    assert.match(terminalReadout, /commandHistory\.length > 12/);
+    assert.doesNotMatch(css, /terminal-readout__history/);
+});
+
+test('status line cycles alien glyphs and lunar phases', () => {
+    assert.match(statusCycle, /statusGlyphs/);
+    assert.match(statusCycle, /lunarPhases/);
+    assert.match(statusCycle, /statusCycleInterval = null/);
+    assert.match(statusCycle, /clearInterval\(statusCycleInterval\)/);
+    assert.match(statusCycle, /setInterval\(cycleStatusLine, STATUS_CYCLE_INTERVAL_MS\)/);
+});
+
+test('page integrations have focused lifecycle modules', () => {
+    assert.match(script, /startTerminalReadout/);
+    assert.match(script, /setupSpotify/);
+    assert.match(script, /startStatusCycle/);
+    assert.match(script, /startSocialGlitch/);
+    assert.match(socialGlitch, /startSocialGlitch/);
+    assert.match(socialGlitch, /stopSocialGlitch/);
+    assert.match(spotify, /setupSpotify/);
+});
+
+test('terminal content helpers keep their contracts', () => {
+    assert.equal(nextTerminalLine(['only'], 0), 0);
+    assert.notEqual(nextTerminalLine(['first', 'second'], 0), 0);
+    assert.equal(getCommandResponse('> whoami // UNKNOWN'), '↳ OPERATOR: UNKNOWN // OK');
+    assert.equal(getTransmissionResponse('> not-a-transmission'), null);
+    assert.match(buildRandomTerminalLine(), /^⟦ .+ ⟧$/);
 });
 
 test('logo animation adds breathing, eye focus, and power-cycle motion', () => {
