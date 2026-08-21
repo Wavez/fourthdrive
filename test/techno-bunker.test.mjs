@@ -20,6 +20,10 @@ const terminalScript = `${terminalContent}\n${terminalReadout}`;
 const logo = await readFile(new URL('../public/logo.svg', import.meta.url), 'utf8');
 
 test('homepage keeps the existing media and logo inside the terminal shell', () => {
+    assert.match(html, /<title>Fourth Drive — Techno Producer &amp; Modular Synths<\/title>/);
+    assert.match(html, /<link rel="canonical" href="https:\/\/fourthdrive\.com\/"\/>/);
+    assert.doesNotMatch(html, /<meta name="keywords"/);
+    assert.match(html, /"@type": "MusicGroup"/);
     assert.match(html, /class="terminal-shell"/);
     assert.match(html, /class="spacetime-grid"/);
     assert.match(html, /class="site-status"/);
