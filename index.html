@@ -49,6 +49,10 @@
 
 </head>
 <body class="terminal-shell">
+<span class="deco-corner deco-corner--tl" aria-hidden="true"></span>
+<span class="deco-corner deco-corner--tr" aria-hidden="true"></span>
+<span class="deco-corner deco-corner--bl" aria-hidden="true"></span>
+<span class="deco-corner deco-corner--br" aria-hidden="true"></span>
 <header class="site-status" aria-label="System status">
     <span class="status-glyph" aria-label="Lower Deck 04"><span aria-hidden="true">⟟ 04</span></span>
     <span class="status-glyph status-glyph--center" aria-label="Fourth Drive Transmission"><span class="terminal-readout" aria-hidden="true"><span class="terminal-readout__text"></span><span class="terminal-readout__cursor">▌</span></span></span>
@@ -73,7 +77,14 @@
             <img src="/logo.svg" alt="Fourth Drive logo" decoding="async" fetchpriority="high"/>
         </div>
     </div>
-    <div class="social">
+    <div class="social-panel">
+        <svg class="panel-ornament" viewBox="0 0 48 20" width="48" height="20" aria-hidden="true">
+            <rect x="8" y="4" width="32" height="12"/>
+            <path class="panel-ornament__tick" d="M2 10 L15 10 M33 10 L46 10"/>
+            <path class="panel-ornament__gem-outer" d="M24 3 L30 10 L24 17 L18 10 Z"/>
+            <path class="panel-ornament__gem-inner" d="M24 7 L27 10 L24 13 L21 10 Z"/>
+        </svg>
+        <div class="social">
         <a href="https://ffm.bio/fourthdrive" target="_blank" rel="noopener noreferrer" title="feature.fm"
            aria-label="feature.fm" data-label="MORE">
             <svg width="256" height="256" viewBox="0 0 256 256" aria-hidden="true" focusable="false">
@@ -92,11 +103,17 @@
                 <use href="/icons.svg#gumroad"/>
             </svg>
         </a>
+        </div>
     </div>
     <section id="spotify-container" aria-label="Now playing">
+        <svg class="panel-ornament" viewBox="0 0 48 20" width="48" height="20" aria-hidden="true">
+            <rect x="8" y="4" width="32" height="12"/>
+            <path class="panel-ornament__tick" d="M2 10 L15 10 M33 10 L46 10"/>
+            <path class="panel-ornament__gem-outer" d="M24 3 L30 10 L24 17 L18 10 Z"/>
+            <path class="panel-ornament__gem-inner" d="M24 7 L27 10 L24 13 L21 10 Z"/>
+        </svg>
         <div class="player-header">
             <span>&gt; NOW PLAYING</span>
-            <span>SPOTIFY LINK</span>
         </div>
         <div class="player-viewport">
             <div id="spotify-spinner" class="spinner">

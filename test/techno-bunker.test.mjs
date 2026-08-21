@@ -55,7 +55,7 @@ test('logo animation adds breathing, eye focus, and power-cycle motion', () => {
     assert.match(logo, /id="eye-inner"/);
     assert.match(logo, /@keyframes cloud-pressure/);
     assert.match(logo, /stroke="#d7ec99" stroke-width="1\.5"/);
-    assert.match(logo, /<path d="M43 58l-1 10" \/>/);
+    assert.match(logo, /<path d="M43,58 c1\.6,3\.2 1\.9,5\.4 1\.9,6\.6 a1\.9,1\.9 0 1,1 -3\.8,0 c0,-1\.2 0\.3,-3\.4 1\.9,-6\.6 z" \/>/);
     assert.match(logo, /#cloud-rain path/);
     assert.match(logo, /@keyframes cloud-rain-fall/);
     assert.match(logo, /transform: translateY\(120px\)/);
