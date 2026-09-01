@@ -75,6 +75,7 @@ test('bunker atmosphere is CSS-only and respects reduced motion', () => {
 
 test('Spotify player reserves its embed height before initialization', () => {
     assert.match(css, /\.player-viewport\s*\{[^}]*min-height:\s*152px;/s);
+    assert.match(css, /\.player-viewport\s+iframe\s*\{[^}]*display:\s*block;/s);
 });
 
 test('terminal readout keeps one cancellable timer', () => {

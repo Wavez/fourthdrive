@@ -27,9 +27,9 @@
     margin-top: 1rem;
 }
 
-iframe#spotify-player {
+.player-viewport iframe {
+    display: block;
     border: none;
-    opacity: 0;
 }
 
 .spinner {
