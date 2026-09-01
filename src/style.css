@@ -896,11 +896,6 @@ iframe#spotify-player {
 }
 
 @media (max-width: 600px) {
-    .terminal-frame {
-        align-items: flex-start;
-        min-height: 100svh;
-    }
-
     .site-status {
         top: 1.2rem;
         width: min(100% - 3rem, 460px);
@@ -923,8 +918,6 @@ iframe#spotify-player {
 
     .container {
         width: min(100% - 3rem, 460px);
-        justify-content: flex-start;
-        min-height: 100svh;
         padding-top: 4rem;
     }
 

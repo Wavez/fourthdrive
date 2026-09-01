@@ -73,17 +73,6 @@ test('bunker atmosphere is CSS-only and respects reduced motion', () => {
     assert.match(css, /\.status-glyph--center[^}]*justify-content: center/s);
 });
 
-test('mobile layout keeps the content anchored to the visible viewport', () => {
-    const mobileRules = css.match(/@media \(max-width: 600px\)\s*\{([\s\S]*?)\n\}\n\n\.glitch/)?.[1] ?? '';
-    const terminalFrameRule = mobileRules.match(/\.terminal-frame\s*\{([^}]*)\}/)?.[1] ?? '';
-    const containerRule = mobileRules.match(/\.container\s*\{([^}]*)\}/)?.[1] ?? '';
-
-    assert.match(terminalFrameRule, /align-items:\s*flex-start;/);
-    assert.match(terminalFrameRule, /min-height:\s*100svh;/);
-    assert.match(containerRule, /justify-content:\s*flex-start;/);
-    assert.match(containerRule, /min-height:\s*100svh;/);
-});
-
 test('terminal readout keeps one cancellable timer', () => {
     assert.match(terminalReadout, /terminalTimer = null/);
     assert.match(terminalReadout, /clearTimeout\(terminalTimer\)/);
